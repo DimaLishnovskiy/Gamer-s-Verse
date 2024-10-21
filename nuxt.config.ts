@@ -1,6 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify';
-import path from "path";
+import vuetify from 'vite-plugin-vuetify';
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -16,33 +15,18 @@ export default defineNuxtConfig({
   // },
   
   css: [
+    "@/assets/main.scss",
     'vuetify/lib/styles/main.sass',
   ],
   
   build: {
     transpile: ['vuetify'],
   },
-  modules: ['vuetify-nuxt-module'],
   
-  vite: {
-    vue: {
-      template: {
-        transformAssetUrls,
-      },
-    },
-    define: {
-      'process.env.DEBUG': false,
-    },
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: '@use "~/assets/colors.scss" as *;'
-        }
-      }
-    },
-  },
   devServer: {
     host: 'localhost',
     port: 3000
   },
+  
+  modules: ['vuetify-nuxt-module', '@nuxt/icon', '@nuxt/image'],
 });

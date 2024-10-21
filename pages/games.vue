@@ -1,0 +1,109 @@
+<script setup lang="ts">
+
+import Choose from "~/components/Games/Choose.vue";
+
+const { mobile } = useDisplay();
+const display = ref(useDisplay())
+
+const images = [
+  "/games/warcraft.svg",
+  "/games/runescape.svg",
+  "/games/league_legends.svg",
+  "/games/diablo.svg",
+  "/games/fifa.svg",
+  "/games/dota.png",
+  "/games/valorant.png",
+  "/games/exile.png",
+  "/games/apex.png",
+  "/games/cs2.png",
+  "/games/final.png",
+  "/games/fortnite.png",
+  "/games/overwatch.png",
+  "/games/call.png",
+  "/games/wot.png",
+  "/games/tarkov.png",
+];
+</script>
+
+<template>
+  <div v-if="display.smAndUp" class="game__cards-bg">
+    <v-container class="game__cards" max-width="1212" width="100%">
+      <v-row no-gutters>
+        <v-col cols="12">
+          <Choose/>
+        </v-col>
+        <v-col cols="12" class="d-flex align-center justify-center flex-wrap ga-6">
+          <div class="game__card" v-for="image in images">
+            <img :src="image" alt="">
+          </div>
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
+  <div v-else>
+    <div>
+      <v-container max-width="1212" width="100%">
+        <v-row no-gutters>
+          <v-col cols="12">
+            <Choose/>
+          </v-col>
+          <v-col cols="12">
+            <div class="game__cards-mobile position-relative d-flex align-center justify-center flex-wrap ga-6">
+              <div class="game__card" v-for="image in images">
+                <img :src="image" alt="">
+              </div>
+            </div>
+          </v-col>
+        </v-row>
+      </v-container>
+    </div>
+  </div>
+</template>
+
+<style lang="scss">
+.game {
+  &__cards {
+    padding-bottom: 81px;
+
+    &-bg {
+      background-image: url("/game_bg.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100%;
+      background-position: bottom;
+    }
+
+    &-mobile {
+      &::after {
+        content: "";
+        background-image: url("/game_bg_mobile.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: absolute;
+        width: 105%;
+        bottom: 0;
+        z-index: -1;
+        height: 1200px;
+        overflow: visible;
+      }
+    }
+  }
+
+  &__card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('/noise.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 146px;
+    max-width: 277px;
+    width: 100%;
+
+    &:hover {
+      border: 2px solid #FAE97E;
+      background-image: none;
+    }
+  }
+}
+</style>
