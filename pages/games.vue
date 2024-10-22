@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import Choose from "~/components/Games/Choose.vue";
+import Contact from "~/components/Contact.vue";
 
 const { mobile } = useDisplay();
 const display = ref(useDisplay())
@@ -27,6 +28,7 @@ const images = [
 
 <template>
   <div v-if="display.smAndUp" class="game__cards-bg">
+    <Menu class="game__menu"></Menu>
     <v-container class="game__cards" max-width="1212" width="100%">
       <v-row no-gutters>
         <v-col cols="12">
@@ -58,10 +60,19 @@ const images = [
       </v-container>
     </div>
   </div>
+
+  <Contact></Contact>
+  <Footer></Footer>
 </template>
 
 <style lang="scss">
 .game {
+
+  &__menu {
+    padding-top: 38px;
+    margin-bottom: 111px;
+  }
+
   &__cards {
     padding-bottom: 81px;
 

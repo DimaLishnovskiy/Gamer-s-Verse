@@ -4,11 +4,13 @@
     "/instagram.png",
     "/whatsapp.png",
   ]
+
+  const display = ref(useDisplay())
 </script>
 
 <template>
   <v-sheet max-width="536" class="d-flex bg-transparent ga-2 justify-center justify-sm-space-between w-100 flex-wrap">
-    <v-sheet v-for="image in images" :key="image" width="162" height="102" class="image-container bg-transparent d-flex justify-center align-center">
+    <v-sheet v-for="image in images" :key="image" :width="display.smAndUp ? 162 : 142" :height="display.smAndUp ? 102 : 92" class="image-container bg-transparent d-flex justify-center align-center">
       <div>
         <img :src="image">
       </div>

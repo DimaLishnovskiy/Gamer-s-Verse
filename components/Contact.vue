@@ -1,28 +1,55 @@
 <script setup lang="ts">
-
+const display = ref(useDisplay());
 </script>
 
 <template>
-  <div class="opt__contact">
-    <v-sheet max-width="944" class="w-100 bg-transparent opt__contact_container">
-      <div class="opt__contact_content">
-        <p class="fs-40 text-uppercase text-white title font-weight-bold">contact support</p>
-        <p class="text-white text-uppercase title fs-20 font-weight-medium">Need further assistance with your order?</p>
-      </div>
-    </v-sheet>
+  <div class="contact__container">
+    <div class="contact__contact h-100">
+      <v-container :max-width="useCalcContainer(944)" class="w-100 bg-transparent contact__contact_container pl-15">
+        <div class="opt__contact_content">
+          <p class="fs-40 text-uppercase text-white title font-weight-bold mb-4">contact support</p>
+          <p class="text-white text-uppercase title fs-20 font-weight-medium mb-7">Need further assistance with your <span class="d-block d-sm-inline">order?</span></p>
+          <v-btn class="contact__custom-button title lh-1 pt-1" size="x-large" height="64" :width="display.smAndUp ? 239 : 218">
+            CONTACT US
+          </v-btn>
+        </div>
+      </v-container>
+    </div>
   </div>
 </template>
 
 <style lang="scss">
-.opt {
+.contact {
+
+  &__custom-button {
+    color: black;
+    background-image: url('/gold_button_bg.png'); /* Шлях до вашого фонового зображення */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 100px;
+    font-weight: 600 !important;
+
+    &:hover {
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    }
+  }
+
   &__contact_content {
     @media(max-width: 900px) {
       padding: 0 60px
     }
   }
 
+  &__container {
+    background-image: url('/contact_bg.png');
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 305px;
+  }
+
   &__contact {
-    margin-top: 10px;
     width: 100%;
     height: 296px;
     display: flex;
@@ -34,7 +61,7 @@
     background-size: contain;
 
     @media (max-width: 768px) {
-      background-size: 50%; /* Зменшуємо розмір фону для менших екранів */
+      background-size: 70%;
     }
   }
 }

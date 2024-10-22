@@ -3,68 +3,108 @@
 import Inquire from "~/components/OptIn/Inquiry.vue";
 import Social from "~/components/OptIn/Social.vue";
 import Contact from "~/components/Contact.vue";
+
+const display = ref(useDisplay())
 </script>
 
 <template>
-  <v-container class="container opt pt-0" fluid>
-    <v-row class="position-relative" no-gutters>
-      <v-col cols="12" class="d-flex justify-center align-center flex-column pb-8">
-        <img src="/opt/opt_img.png" class="w-100 opt__img">
-        <h1 class="text-white text-uppercase font-weight-bold title text-center mb-15">Leave Your Custom Inquiry</h1>
-        <p class="custom-yellow-josefin text-center text-uppercase fz-18 mb-10 opt__text">Any game. Any service. We do it all. Whether you need a few thousand XP or a single quest completed. A raid cleaned or a skin unlocked. </p>
-        <p class="custom-yellow-josefin text-center text-uppercase fz-18 opt__text mb-10">Name your request down below and we will contact our vast network of professional gamers who are ready to make your wildest gaming dreams come true.</p>
-        <p class="custom-yellow-josefin text-center text-uppercase fz-18 opt__text">Get In Touch Via Messaging Apps</p>
-      </v-col>
-      <v-col cols="12" class="d-flex justify-center align-center pb-10">
-        <Social/>
-      </v-col>
-      <v-col>
-        <Inquire/>
-      </v-col>
-      <div class="opt__light"></div>
-    </v-row>
-  </v-container>
-  <img src="/opt/opt_city.png" class="city">
+  <div class="opt">
+    <Menu class="opt__menu"/>
+    <nuxt-img v-if="display.smAndUp" src="/opt_city.svg" class="w-100 opt__city"></nuxt-img>
+    <nuxt-img v-else src="/opt_city_mobile.svg" class="w-100 opt__city-mobile"></nuxt-img>
 
+    <v-container class="opt__container pt-0 px-3" fluid>
+      <v-row class="position-relative" no-gutters>
+        <v-col cols="12" class="d-flex justify-center align-center flex-column mb-10 mb-sm-15">
+          <img src="/opt/opt_img.png" class="w-100 opt__img">
+          <h1 class="text-white text-uppercase font-weight-bold fs-40 title text-center mb-10 mb-sm-15"><span class="d-block d-sm-inline">Leave Your Custom</span> Inquiry</h1>
+          <p class="custom-yellow title text-center text-uppercase fs-18 mb-4 mb-sm-10 opt__text">Any game. Any service. We do it all. Whether you need a few thousand XP or a single quest completed. A raid cleaned or a skin unlocked. </p>
+          <p class="custom-yellow title text-center text-uppercase fs-18 opt__text">Name your request down below and we will contact our vast network of professional gamers who are ready to make your wildest gaming dreams come true.</p>
+        </v-col>
+        <v-col cols="12" class="d-flex justify-center align-center flex-column align-center mb-10 mb-sm-15">
+          <p class="custom-yellow title text-center text-uppercase fs-18 opt__text mb-6 mb-sm-8">Get In Touch Via Messaging Apps</p>
+          <Social/>
+        </v-col>
+        <v-col cols="12" class="d-flex justify-center">
+          <v-sheet class="bg-transparent w-100" max-width="478">
+            <Inquire/>
+          </v-sheet>
+        </v-col>
+        <div class="opt__light"></div>
+      </v-row>
+    </v-container>
+
+    <Contact></Contact>
+    <Footer></Footer>
+  </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .opt {
+  background-image: url("/opt_bg.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  background-position: bottom;
+  backdrop-filter: blur(20px);
+  position: relative;
 
-  &, .container {
+  @media (max-width: 600px) {
+    background-image: url("/opt_bg_mobile.svg");
+  }
+
+  &__city-mobile {
+    position: absolute;
+    z-index: 1;
+    top: -40px;
+    width: 100%;
+  }
+
+  &__container {
     max-width: 850px;
     width: 100%;
-    margin: 0 auto;
+    position: relative;
+    z-index: 5;
+    margin-bottom: 187px;
+
+    @media(max-width: 600px) {
+      margin-bottom: 119px;
+    }
+  }
+
+  &__menu {
+    position: relative;
+    z-index: 5;
+    padding-top: 38px;
+    margin-bottom: 111px;
+
+    @media(max-width: 600px) {
+      margin-bottom: 117px;
+    }
   }
 
   &__img {
     margin-bottom: 80px;
+
+    @media(max-width: 600px) {
+      margin-bottom: 95px;
+    }
   }
 
   &__text {
     line-height: 32px;
     letter-spacing: 1.01px;
-  }
-}
 
-.city {
-  width: 100%;
-  height: auto;
-  min-height: 460px;
-  max-height: 924px;
-  position: absolute;
-  top: -60px;
-  z-index: -2;
-  object-fit: cover;
-  
-  @media(max-width: 1200px) {
-    min-height: 800px;
-    top: -70px;
+    @media(max-width: 600px) {
+      line-height: 16px;
+    }
   }
 
-  @media(max-width: 600px) {
-    min-height: 600px;
-    top: -20px;
+  &__city {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    width: 100%;
   }
 }
 </style>

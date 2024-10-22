@@ -10,8 +10,6 @@ import Contact from "~/components/Contact.vue";
     <v-main>
       <NuxtPage/>
     </v-main>
-    <Contact v-if="$route.name !== 'contact-us'"/>
-    <Footer v-if="$route.name !== 'contact-us'"/>
   </v-app>
 </template>
 

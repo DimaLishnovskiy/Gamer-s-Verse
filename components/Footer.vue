@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const display = ref(useDisplay())
 
 </script>
 
@@ -6,9 +7,9 @@
   <footer class="foot">
     <v-row justify="center" no-gutters>
       <v-col cols="12">
-        <v-sheet height="160" class="image-container bg-transparent d-flex justify-center w-100">
+        <v-sheet :height="display.smAndUp ? 160 : 83" class="image-container bg-transparent d-flex justify-center w-100">
           <h1 class="text-white d-flex align-center justify-center flex-column">
-            <img src="/logo.png" class="mb-6">
+            <nuxt-img src="/logo.png" :width="display.smAndUp ? 64 : 42" class="mb-1 mb-sm-6"></nuxt-img>
             <span class="custom-white fs-14 font-weight-thin">All rights  reserved @ 2023</span>
           </h1>
         </v-sheet>
