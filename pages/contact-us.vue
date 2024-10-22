@@ -23,11 +23,12 @@
   </v-container>
 </template>
 
-<style scoped>
+<style lang="scss">
 .container-contact {
   max-width: 720px;
   margin: 0 auto;
 }
+
 
 .background {
   position: absolute;
