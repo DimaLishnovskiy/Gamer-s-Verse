@@ -9,7 +9,7 @@ const display = ref(useDisplay());
         <div class="opt__contact_content">
           <p class="fs-40 text-uppercase text-white title font-weight-bold mb-4">contact support</p>
           <p class="text-white text-uppercase title fs-20 font-weight-medium mb-7">Need further assistance with your <span class="d-block d-sm-inline">order?</span></p>
-          <v-btn class="gold-button title lh-1 pt-1" size="x-large" height="64" :width="display.smAndUp ? 239 : 218">
+          <v-btn class="gold-button contact__custom-button  title lh-1 pt-1" size="x-large" height="64" :width="display.smAndUp ? 239 : 218">
             CONTACT US
           </v-btn>
         </div>
