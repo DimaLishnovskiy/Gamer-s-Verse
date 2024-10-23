@@ -1,21 +1,20 @@
 <script setup lang="ts">
 import Story from "~/components/AboutUs/Story.vue";
 
-const textYellowStyles = "custom-yellow text-title title font-weight-regular lh-2 fs-18";
+const textYellowStyles = "custom-yellow text-title title font-weight-regular fs-18";
 const { mobile } = useDisplay();
 </script>
 
 <template>
   <div class="about">
     <div class="position-relative">
-<!--      <img v-if="!mobile" class="about__image" src="/about/about_city.svg">-->
 
       <v-container class="pa-0 pt-9 about__title-mobile w-100" fluid >
         <v-row no-gutters>
           <v-col class="d-flex align-center flex-column" cols="12">
-            <Menu class="about__menu"/>
-            <h1 class="text-center custom-yellow font-weight-bold text-uppercase title about__title lh-1 fs-72" :class="mobile ? 'fs-32' : 'fs-72'">
-              <span class="d-md-inline-block d-block mr-0 mr-md-7">About</span>
+            <Menu class="about__menu w-100"/>
+            <h1 class="text-center text-white font-weight-bold text-uppercase title about__title lh-1 fs-72" :class="mobile ? 'fs-32' : 'fs-72'">
+              <span class="d-md-inline-block d-block mr-0 mr-md-7 text-img">About</span>
               <span>Us</span>
             </h1>
             <nuxt-img src="/about/about.png" class="about__image-main w-100 px-4"></nuxt-img>
@@ -23,52 +22,57 @@ const { mobile } = useDisplay();
         </v-row>
       </v-container>
 
-      <v-container class="about__container">
+      <v-container class="about__container py-0 px-2">
         <v-row no-gutters>
           <v-col cols="12" class="about__block__1 d-flex justify-center">
             <v-sheet max-width="602" class="bg-transparent w-100 d-flex flex-column align-center">
               <div v-if="!mobile" class="d-flex align-center mb-15 px-6 w-100">
                 <nuxt-img class="mr-15" width="80" height="80" src="/about/mask.png"></nuxt-img>
                 <div class="w-100">
-                  <p :class="textYellowStyles">From The Desk Of Mantas,</p>
-                  <p :class="textYellowStyles">Founder of Ball Hard’s Den</p>
+                  <p :class="textYellowStyles" :style="mobile ? 'lh-1' : 'lh-2'">From The Desk Of Mantas,</p>
+                  <p :class="textYellowStyles" :style="mobile ? 'lh-1' : 'lh-2'">Founder of Ball Hard’s Den</p>
                 </div>
               </div>
-              <p :class="textYellowStyles" class="text-center mb-10">For busy real-life hustlers,</p>
-              <p :class="textYellowStyles" class="text-center mb-10">Keen students… loving dads… dedicated entrepreneurs…and every motivated person who harbours high-aspirations in the game of life.</p>
-              <p :class="textYellowStyles" class="text-center">Having dreams to chase or kids to raise should not get in the way of your aim to dominate the games you play.</p>
+              <p :class="textYellowStyles" :style="mobile ? 'lh-1' : 'lh-2'" class="text-center mt-5 mb-10">For busy real-life hustlers,</p>
+              <p :class="textYellowStyles" :style="mobile ? 'lh-1' : 'lh-2'" class="text-center mb-10">Keen students… loving dads… dedicated entrepreneurs…and every motivated person who harbours high-aspirations in the game of life.</p>
+              <p :class="textYellowStyles" :style="mobile ? 'lh-1' : 'lh-2'" class="text-center">Having dreams to chase or kids to raise should not get in the way of your aim to dominate the games you play.</p>
             </v-sheet>
           </v-col>
 
           <v-col cols="12" class="d-flex justify-center">
             <v-sheet max-width="602" class="about__block__2 bg-transparent w-100 d-flex flex-column align-center">
-              <h2 class="title text-uppercase font-weight-bold  text-white" :class="mobile ? 'mb-10 fs-24' : 'mb-15 fs-40'">win all the games</h2>
-              <p :class="textYellowStyles" class="text-center mb-10">Our mission is to help you play less so you have time to chase success in the game of real life - and still WIN ONLINE.</p>
-              <p :class="textYellowStyles" class="text-center mb-10">Successful people outsource, delegate, and work with MENTORS to level up and progress FAST!</p>
-              <p :class="textYellowStyles" class="text-center mb-10">Life is too short to do it all on your own.</p>
-              <p :class="textYellowStyles" class="text-center mb-10">Michael Jordan worked with Phil Jackson. Mike Tyson had Cus D'Amato.</p>
-              <p :class="textYellowStyles" class="text-center">And people who wanna WIN both online and in the game of life have BALL HARD’S DEN.</p>
+              <h2 class=" title text-uppercase font-weight-bold  text-white" :class="mobile ? 'mb-10' : 'mb-15 fs-40'"><span class="text-img">win</span> all the games</h2>
+              <p :class="textYellowStyles" :style="mobile ? 'lh-1' : 'lh-2'" class="text-center mb-10">Our mission is to help you play less so you have time to chase success in the game of real life - and still WIN ONLINE.</p>
+              <p :class="textYellowStyles" :style="mobile ? 'lh-1' : 'lh-2'" class="text-center mb-10">Successful people outsource, delegate, and work with MENTORS to level up and progress FAST!</p>
+              <p :class="textYellowStyles" :style="mobile ? 'lh-1' : 'lh-2'" class="text-center mb-10">Life is too short to do it all on your own.</p>
+              <p :class="textYellowStyles" :style="mobile ? 'lh-1' : 'lh-2'" class="text-center mb-10">Michael Jordan worked with Phil Jackson. Mike Tyson had Cus D'Amato.</p>
+              <p :class="textYellowStyles" :style="mobile ? 'lh-1' : 'lh-2'" class="text-center">And people who wanna WIN both online and in the game of life have BALL HARD’S DEN.</p>
             </v-sheet>
           </v-col>
 
           <v-col cols="12" class="about__btn-fulfill d-flex justify-center">
-            <v-btn>Fulfill Your Gaming Dreams</v-btn>
+            <button class="gold-button" style="width: 380px">
+              Fulfill Your Gaming Dreams
+            </button>
           </v-col>
           <v-col cols="12" class="story d-flex justify-center flex-column align-center">
             <Story/>
           </v-col>
           <v-col cols="12" class="about__end d-flex justify-center flex-column align-center">
             <h2 class="fs-40 text-white font-weight-bold title text-uppercase mb-6 mb-md-10">
-              <span class="d-block d-md-inline text-center">Join<span> the </span></span>
-              <span class="d-block d-md-inline text-center"><span>movement</span> of </span>
+              <span class="d-block d-md-inline text-center">Join<span class="text-img"> the </span></span>
+              <span class="d-block d-md-inline text-center"><span class="text-img">movement</span> of </span>
               <span class="d-block d-md-inline text-center">Ball Hard’s!</span>
             </h2>
             <span class="title font-weight-medium fs-18 text-uppercase text-white mb-15">log in... ball out... and bounce.</span>
-            <v-btn>Fulfill Your Gaming Dreams</v-btn>
+            <button class="gold-button">Fulfill Your Gaming Dreams</button>
           </v-col>
         </v-row>
       </v-container>
     </div>
+
+    <Contact/>
+    <Footer/>
   </div>
 </template>
 
@@ -137,7 +141,7 @@ const { mobile } = useDisplay();
     margin-bottom: 36px;
 
     @media(max-width: 1200px) {
-      margin-bottom: 46px;
+      margin-bottom: 56px;
     }
     &-mobile {
       background-image: url("/about/about_city.svg");

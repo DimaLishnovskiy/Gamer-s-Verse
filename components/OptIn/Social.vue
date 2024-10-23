@@ -25,5 +25,11 @@
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
+  transition: border 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  &:hover {
+    border: 1px solid #FAE97E;
+  }
 }
 </style>

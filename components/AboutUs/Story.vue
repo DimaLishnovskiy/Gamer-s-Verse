@@ -28,19 +28,19 @@ const data = [
 </script>
 
 <template>
-  <h2 class="text-uppercase title font-weight-bold text-white mb-15 fs-40">our story</h2>
+  <h2 class="text-uppercase title font-weight-bold text-white mb-13 mb-sm-15 fs-40">our <span class="text-img">story</span></h2>
   <div class="story__bg">
     <div v-if="mobile" class="story__mask d-flex align-center px-8 pt-6 w-100">
       <nuxt-img class="mr-4" width="80" height="80" src="/about/mask.png"></nuxt-img>
       <div class="w-100">
-        <p :class="textYellowStyles">From The Desk Of Mantas,</p>
-        <p :class="textYellowStyles">Founder of Ball Hard’s Den</p>
+        <p :class="textYellowStyles" class="fs-18">From The Desk Of Mantas,</p>
+        <p :class="textYellowStyles" class="fs-18">Founder of Ball Hard’s Den</p>
       </div>
     </div>
-    <div class="story__story d-flex justify-space-between align-center ga-16" v-for="(story, key) in data" :class="(key % 2) !== 0  ? 'flex-column flex-lg-row-reverse' : 'flex-column flex-lg-row'">
+    <div class="story__story d-flex justify-space-between align-center ga-8 ga-sm-16" v-for="(story, key) in data" :class="(key % 2) !== 0  ? 'flex-column flex-lg-row-reverse' : 'flex-column flex-lg-row'">
       <img class="order-2 w-100 w-lg-auto" :src="story.img">
       <v-sheet class="bg-transparent" :max-width="!mobile ? 350 : '100%'">
-        <p :class="textYellowStyles" class="fs-18 font-weight-regular">{{ story.text }}</p>
+        <p :class="textYellowStyles" class="fs-18 font-weight-regular text-center text-lg-left">{{ story.text }}</p>
       </v-sheet>
     </div>
   </div>

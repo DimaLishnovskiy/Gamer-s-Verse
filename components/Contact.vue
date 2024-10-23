@@ -5,13 +5,14 @@ const display = ref(useDisplay());
 <template>
   <div class="contact__container">
     <div class="contact__contact h-100">
-      <v-container :max-width="useCalcContainer(944)" class="w-100 bg-transparent contact__contact_container pl-15">
+      <v-container :max-width="useCalcContainer(944)" class="w-100 bg-transparent contact__contact_container pl-0 pl-sm-15 d-flex d-sm-block justify-center">
         <div class="opt__contact_content">
-          <p class="fs-40 text-uppercase text-white title font-weight-bold mb-4">contact support</p>
+          <p class="fs-40 text-uppercase text-white title font-weight-bold mb-4">contact <span class="text-img">support</span></p>
           <p class="text-white text-uppercase title fs-20 font-weight-medium mb-7">Need further assistance with your <span class="d-block d-sm-inline">order?</span></p>
-          <v-btn class="gold-button contact__custom-button  title lh-1 pt-1" size="x-large" height="64" :width="display.smAndUp ? 239 : 218">
-            CONTACT US
-          </v-btn>
+          <button class="gold-button" :style="display.xs ? 'width: 218px' : 'width: 231px'">
+            <Icon name="solar:chat-round-dots-bold" size="18"></Icon>
+            Contact Us
+          </button>
         </div>
       </v-container>
     </div>
@@ -20,24 +21,9 @@ const display = ref(useDisplay());
 
 <style lang="scss">
 .contact {
-
-  &__custom-button {
-    color: black;
-    background-image: url('/gold_button_bg.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 100px;
-    font-weight: 600 !important;
-
-    &:hover {
-      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
-    }
-  }
-
   &__contact_content {
     @media(max-width: 900px) {
-      padding: 0 60px
+
     }
   }
 
