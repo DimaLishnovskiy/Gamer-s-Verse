@@ -11,9 +11,9 @@
               prevEl: '.custom-prev',
             }"
       :slidesPerView="5"
+      loop="true"
       effect="coverflow"
       :coverflowEffect="{ rotate: 0, stretch: 100, depth: 300, modifier: 1 }"
-      pagination
     >
       <swiper-slide>
         <nuxt-img width="275" src="/index/slide.png" alt="Image 1"></nuxt-img>
