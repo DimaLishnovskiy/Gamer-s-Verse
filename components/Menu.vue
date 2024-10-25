@@ -53,7 +53,7 @@ const modal = ref(false)
                 <nuxt-img src="/logo_text.svg" :width="mobile ? 134 : 289"></nuxt-img>
                 <v-sheet max-width="227" class="d-flex w-100 justify-space-between bg-transparent">
                   <template v-for="right in menuRight">
-                    <span v-if="right.action" @click="right.action()" class="text-uppercase text-decoration-none custom-white title fs-16">{{ right.name }}</span>
+                    <span v-if="right.action" @click="right.action()" class="text-uppercase text-decoration-none custom-white title fs-16 cursor-pointer">{{ right.name }}</span>
                     <nuxt-link v-else :to="right.to" class="text-uppercase text-decoration-none custom-white title fs-16">{{ right.name }}</nuxt-link>
                   </template>
                 </v-sheet>
@@ -80,7 +80,7 @@ const modal = ref(false)
             <v-item-group v-model="selected" mandatory>
               <v-list-item-title v-for="(filter) in menuRight.concat(menuLeft)" class="py-6 text-center">
                 <v-item :value="filter">
-                  <span v-if="filter.action" @click="filter.action()" class="title text-decoration-none text-uppercase cursor-pointer font-weight-medium fs-16 text-white">
+                  <span v-if="filter.action" @click="filter.action()" class="title text-decoration-none text-uppercase cursor-pointer font-weight-medium fs-16 text-white ">
                     {{filter.name}}
                   </span>
                   <nuxt-link v-else-if="route.name != filter.route" :to="`${filter.to}`" class="title text-decoration-none text-uppercase cursor-pointer font-weight-medium fs-16">

@@ -126,7 +126,11 @@ const slidesPerView = computed((): number => {
       z-index: 999;
 
       @media (max-width: 1100px) {
-        left: -3%
+        left: -4%
+      }
+
+      @media(max-width: 450px) {
+        left: -7%
       }
     }
 
@@ -136,16 +140,16 @@ const slidesPerView = computed((): number => {
       top: 45%;
       z-index: 999;
       @media (max-width: 1100px) {
-        right: -3%
+        right: -4%
+      }
+
+      @media(max-width: 450px) {
+        right: -7%
       }
     }
 
     .wrap {
       position: relative;
-
-      @media (max-width: 450px) {
-        transform: translateX(11px);
-      }
     }
   }
 }
