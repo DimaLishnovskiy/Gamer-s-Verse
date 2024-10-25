@@ -24,6 +24,8 @@ const images = [
   "/games/wot.png",
   "/games/tarkov.png",
 ];
+
+const modal = ref(false)
 </script>
 
 <template>
@@ -57,7 +59,7 @@ const images = [
               </div>
               <div class="d-flex align-start mt-13 mb-11" v-if="mobile">
                 <v-sheet class="gradient-border" max-width="286">
-                  <p class="px-2 py-4 text-uppercase text-white title fs-12 text-center">can’t find what you looking for? Contact us here</p>
+                  <p class="px-2 py-4 text-uppercase text-white title fs-12 text-center">can’t find what you looking for? Contact us <span @click="modal = true" class="text-img cursor-pointer">here</span></p>
                 </v-sheet>
               </div>
             </div>
@@ -69,6 +71,8 @@ const images = [
 
   <Contact></Contact>
   <Footer></Footer>
+
+  <ContactUs v-model="modal"/>
 </template>
 
 <style lang="scss">
@@ -144,6 +148,7 @@ const images = [
     width: 100%;
     backdrop-filter: blur(50px);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: border 0.3s ease, background-image 0.3s ease;
 
     @media(max-width: 600px) {
       height: 112px;
@@ -151,7 +156,7 @@ const images = [
     }
 
     &:hover {
-      border: 2px solid #FAE97E;
+      border: 1px solid #FAE97E;
       background-image: none;
     }
   }

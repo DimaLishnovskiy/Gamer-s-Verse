@@ -51,7 +51,7 @@ const { mobile } = useDisplay();
           </v-col>
 
           <v-col cols="12" class="about__btn-fulfill d-flex justify-center">
-            <button class="gold-button" style="width: 380px">
+            <button @click="navigateTo('games')" class="gold-button" style="width: 380px">
               Fulfill Your Gaming Dreams
             </button>
           </v-col>
@@ -65,7 +65,7 @@ const { mobile } = useDisplay();
               <span class="d-block d-md-inline text-center">Ball Hard’s!</span>
             </h2>
             <span class="title font-weight-medium fs-18 text-uppercase text-white mb-15">log in... ball out... and bounce.</span>
-            <button class="gold-button">Fulfill Your Gaming Dreams</button>
+            <button @click="navigateTo('/games')" class="gold-button">Fulfill Your Gaming Dreams</button>
           </v-col>
         </v-row>
       </v-container>

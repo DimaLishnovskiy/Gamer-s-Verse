@@ -1,54 +1,13 @@
-<script setup lang="ts">
-import "swiper/css";
-import "swiper/css/navigation";
-import { useDisplay } from "vuetify";
-import Swiper from "~/components/Index/Swiper.vue";
-import ImageText from "~/components/Index/ImageText.vue";
-import { useCalcContainer } from "~/composables/useCalcContainer";
-import Marquee from "~/components/Index/Marquee.vue";
-
-const { mobile, xs } = useDisplay();
-
-
-const infoCards = [
-  "RANK AND LEVEL BOOSTING",
-  "gold",
-  "questing",
-  "RAID AND DUNGEON RUNS",
-  "skin unlocks",
-  "coaching",
-];
-
-const feedbacks = [
-  {
-    img: "/index/feedback_img1.png",
-    text: "“I stumbled upon this service and it has completely transformed the way I work. The team behind it is exceptional; they are not just knowledgeable but also incredibly supportive.”",
-  },
-  {
-    img: "/index/feedback_img2.png",
-    text: "“I stumbled upon this service and it has completely transformed the way I work. The team behind it is exceptional; they are not just knowledgeable but also incredibly supportive.”",
-  },
-  {
-    img: "/index/feedback_img3.png",
-    text: "“I stumbled upon this service and it has completely transformed the way I work. The team behind it is exceptional; they are not just knowledgeable but also incredibly supportive.”",
-  },
-  {
-    img: "/index/feedback_img3.png",
-    text: "“I stumbled upon this service and it has completely transformed the way I work. The team behind it is exceptional; they are not just knowledgeable but also incredibly supportive.”",
-  },
-];
-</script>
-
 <template>
   <div class="main">
-    <Menu class="pt-10 main__menu"/>
-    <nuxt-img class="main__city" src="/index/city.svg"></nuxt-img>
+    <Menu class="pt-4 pt-lg-10 main__menu"/>
+    <nuxt-img class="main__city" :src="xs ? '/index/city_mobile_bg.svg' : '/index/city.svg'"></nuxt-img>
 
-    <section class="main__top-block mb-15">
+    <section class="main__top-block mb-12 mb-lg-15">
       <v-container :max-width="useCalcContainer(896)" class="py-0">
         <div class="d-flex justify-center flex-column align-center">
           <h1 class="fs-72 text-uppercase text-center text-white title mb-3">
-            <span class="d-block"><span>win</span> At Any Game</span>
+            <span class="d-block"><span class="text-img">win</span> At Any Game</span>
             <span>You Play</span>
           </h1>
           <p class="fs-16 font-weight-medium title custom-yellow mb-2">7000+ happy clients</p>
@@ -58,14 +17,21 @@ const feedbacks = [
       </v-container>
     </section>
 
-    <section class="main__video mb-16">
-      <v-container class="py-0 position-relative bg-green-darken-4" max-width="818">
-        <div class="d-flex justify-center">
-          <iframe class="main__video__video" :height="xs ? 218 : 474" frameborder="0"></iframe>
-        </div>
+    <section class="main__video mb-11 mb-lg-16 position-relative">
+      <v-container class="py-0 position-relative d-flex justify-center" max-width="818">
+        <nuxt-img src="/index/main_video.png" class="w-100" ></nuxt-img>
         <div class="main__pointers overflow-hidden" v-if="!mobile">
           <nuxt-img class="main__pointer" height="758" src="/index/man_pointing.png"></nuxt-img>
           <img class="main__pointer-shadow" src="/index/man_pointing_shadow.png">
+        </div>
+
+        <div class="overflow-hidden" v-if="display.sm || display.md">
+          <nuxt-img class="main__stick" height="304" src="/index/man_stick.png"></nuxt-img>
+          <nuxt-img class="main__stick-shadow" height="301" src="/index/man_stick_shadow.png"></nuxt-img>
+        </div>
+        <div class="overflow-hidden" v-if="display.xs">
+          <nuxt-img class="main__stick" height="304" src="/index/man_stick_crop.png"></nuxt-img>
+          <nuxt-img class="main__stick-shadow" height="301" src="/index/man_stick_crop_shadow.png"></nuxt-img>
         </div>
       </v-container>
     </section>
@@ -73,17 +39,14 @@ const feedbacks = [
     <section class="main__info-cards">
       <v-container class="py-0 position-relative" :max-width="useCalcContainer(912)">
         <div class="d-flex justify-center align-center flex-column">
-          <v-btn class="mb-16" :max-width="mobile ? 256 : 278" height="64">Explore all games</v-btn>
+          <button @click="navigateTo('/games')" class="gold-button mb-11 mb-lg-15" :style="display.xs ? 'width: 256px' : 'width: 278px'">
+            Explore all games
+          </button>
           <div class="d-flex ga-10 justify-center w-100 flex-wrap">
             <v-sheet v-for="info in infoCards" :width="xs ? 140 : 277" :height="xs ? 58 : 146" class="main__info-card bg-transparent d-flex justify-center align-center">
-              <span class="fs-24 text-center custom-yellow text-uppercase">{{ info }}</span>
+              <span class="fs-24 text-center text-img text-uppercase">{{ info }}</span>
             </v-sheet>
           </div>
-        </div>
-
-        <div class="overflow-hidden" v-if="mobile">
-          <nuxt-img class="main__stick" height="304" src="/index/man_stick.png"></nuxt-img>
-          <nuxt-img class="main__stick-shadow" height="301" src="/index/man_stick_shadow.png"></nuxt-img>
         </div>
       </v-container>
     </section>
@@ -94,28 +57,20 @@ const feedbacks = [
 
     <ImageText class="main__img-text"/>
 
-    <Swiper class="main__swiper"/>
+    <VideoSwiper class="main__swiper"/>
 
     <section class="main__info">
       <v-container class="py-0">
         <div class="d-flex justify-center flex-column align-center">
-          <span class="fs-20 text-uppercase text-white font-weight-medium mb-2">Rated <span class="custom-yellow fs-24">4.9</span> out of <span class="fs-24">5</span> based on <span class="fs-24">333</span> reviews.</span>
+          <span class="fs-20 text-uppercase text-white font-weight-medium mb-2">Rated <span class="text-img fs-24">4.9</span> out of <span class="fs-24 text-img">5</span> based on <span class="fs-24 text-img">333</span> reviews.</span>
           <img class="mb-2" src="/index/stars.png">
           <img class="main__trustpilot" src="/index/trustpilot.png">
         </div>
       </v-container>
     </section>
 
-    <section class="main__feedback">
-      <div class="d-flex align-center flex-column">
-        <div class="main__feedback-container d-flex ga-10 justify-center justify-sm-space-between w-100 flex-wrap">
-          <v-sheet v-for="feedback in feedbacks" width="377" height="377" class="main__feedback-card bg-transparent d-flex pt-8 px-8 align-center flex-column">
-            <img class="pb-8" :src="feedback.img">
-            <p class="custom-yellow text-uppercase fs-16 font-weight-regular lh-1-7 title text-center">{{ feedback.text }}</p>
-          </v-sheet>
-        </div>
-        <v-btn height="64">Explore all games</v-btn>
-      </div>
+    <section class="main__feedback px-4 px-lg-0">
+      <Comments/>
     </section>
 
     <Contact/>
@@ -123,30 +78,104 @@ const feedbacks = [
   </div>
 </template>
 
+<script setup>
+import "swiper/css";
+import "swiper/css/navigation";
+import { useDisplay } from "vuetify";
+import VideoSwiper from "~/components/Index/VideoSwiper.vue";
+import ImageText from "~/components/Index/ImageText.vue";
+import { useCalcContainer } from "~/composables/useCalcContainer";
+import Marquee from "~/components/Index/Marquee.vue";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import Comments from "~/components/Index/Comments.vue";
+
+const { mobile, xs } = useDisplay();
+
+const display = ref(useDisplay())
+const infoCards = [
+  "RANK AND LEVEL BOOSTING",
+  "gold",
+  "questing",
+  "RAID AND DUNGEON RUNS",
+  "skin unlocks",
+  "coaching",
+];
+
+</script>
+
 <style lang="scss">
+
+
 .main {
-  background-image: url("/index/bg.svg");
+  background-image: url("/index/main_bg.svg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100%;
   background-position: bottom;;
   position: relative;
 
+  @media(max-width: 1200px) {
+    background-image: none;
+  }
+
+  &__swiper-wrapper {
+    margin-bottom: 89px;
+
+    @media(max-width: 1200px) {
+      margin-bottom: 102px;
+    }
+  }
+
+  .mySwiper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -1px;
+      height: 100%;
+      width: 224px;
+      background: linear-gradient(90deg, rgba(1,55,37,0) 0%, rgba(1,58,38,1) 100%);
+      z-index: 10;
+      pointer-events: none;
+
+      @media(max-width: 1200px) {
+        background: none;
+      }
+    }
+  }
+
   &__info {
     margin-bottom: 109px;
+
+    &-card {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
   }
 
   &__games {
     position: relative;
     z-index: 5;
     margin-bottom: 180px;
+
+    @media(max-width: 1200px) {
+      margin-bottom: 106px;
+    }
   }
 
   &__feedback {
     margin-bottom: 180px;
 
+    @media(max-width: 600px) {
+      margin-bottom: 101px;
+    }
+
     &-container {
-      margin-bottom: 106px;
+      margin-bottom: 101px;
     }
   }
 
@@ -156,18 +185,33 @@ const feedbacks = [
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(50px);
+    user-select: none
   }
 
   &__img-text {
     margin-bottom: 102px;
+
+    @media(max-width: 1200px) {
+      margin-bottom: 102px;
+    }
   }
 
   &__images-texts {
     margin-bottom: 109px;
+
+    @media(max-width: 1200px) {
+      margin-bottom: 40px;
+    }
   }
 
   &__swiper {
     margin-bottom: 139px;
+
+    @media(max-width: 1200px) {
+      margin-bottom: 102px;
+    }
   }
 
   &__pointer {
@@ -187,26 +231,18 @@ const feedbacks = [
   &__stick {
     position: absolute;
     z-index: 10;
-    top: -55%;
-    right: -6%;
-    height: 400px;
-
-    @media(max-width: 950px) {
-      top: -25%;
-      height: 304px;
-    }
+    bottom: -170px;
+    right: 0;
+    height: 304px;
+    overflow: hidden;
   }
 
   &__stick-shadow {
     position: absolute;
     z-index: 4;
     right: 0;
-    top: 20%;
-    height: 396px;
-
-    @media(max-width: 950px) {
-      top: 15%;
-    }
+    bottom: -420px;
+    height: 300px;
   }
 
   &__city {
@@ -220,6 +256,10 @@ const feedbacks = [
     margin-bottom: 180px;
     position: relative;
     z-index: 5;
+
+    @media(max-width: 1200px) {
+      margin-bottom: 52px;
+    }
   }
 
   &__top-block {
