@@ -1,5 +1,7 @@
 <script setup lang="ts">
 const { xs, mobile } = useDisplay();
+
+const modal = ref(false)
 </script>
 
 <template>
@@ -17,10 +19,12 @@ const { xs, mobile } = useDisplay();
     <div class="d-flex align-start" v-if="!mobile">
       <nuxt-img class="mt-8 mr-1" height="151" src="/little_man.png"></nuxt-img>
       <v-sheet class="gradient-border" max-width="304">
-        <p class="px-2 py-4 text-uppercase text-white title fs-12 text-center">can’t find what you looking for? Contact us here</p>
+        <p class="px-2 py-4 text-uppercase text-white title fs-12 text-center">can’t find what you looking for? Contact us <span class="cursor-pointer text-img" @click="modal = true">here</span></p>
       </v-sheet>
     </div>
   </div>
+
+  <ContactUs v-model="modal"/>
 </template>
 
 <style lang="scss">

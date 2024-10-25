@@ -65,6 +65,11 @@ body {
   }
 }
 
+.fs-36 {
+  @media(max-width: 600px) {
+    font-size: 24px !important;
+  }
+}
 
 .fs-18 {
   @media(max-width: 1200px) {
@@ -80,8 +85,13 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+.w-40 {
+  width: 40% !important;
+}
 
-
+.w-60 {
+  width: 60% !important;
+}
 
 .field__wrapper {
   border-image-source: linear-gradient(90deg, rgba(195, 162, 66, 0.5) 0%, rgba(244, 233, 149, 0.5) 100%,) !important;

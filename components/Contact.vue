@@ -1,15 +1,18 @@
 <script setup lang="ts">
+
 const display = ref(useDisplay());
+
+const modal = ref(false)
 </script>
 
 <template>
-  <div class="contact__container">
+  <div class="contact__container pt-1">
     <div class="contact__contact h-100">
       <v-container :max-width="useCalcContainer(944)" class="w-100 bg-transparent contact__contact_container pl-0 pl-sm-15 d-flex d-sm-block justify-center">
         <div class="opt__contact_content">
           <p class="fs-40 text-uppercase text-white title font-weight-bold mb-4">contact <span class="text-img">support</span></p>
           <p class="text-white text-uppercase title fs-20 font-weight-medium mb-7">Need further assistance with your <span class="d-block d-sm-inline">order?</span></p>
-          <button class="gold-button" :style="display.xs ? 'width: 218px' : 'width: 231px'">
+          <button @click="modal = true" class="gold-button" :style="display.xs ? 'width: 218px' : 'width: 231px'">
             <Icon name="solar:chat-round-dots-bold" size="18"></Icon>
             Contact Us
           </button>
@@ -17,6 +20,8 @@ const display = ref(useDisplay());
       </v-container>
     </div>
   </div>
+
+  <ContactUs v-model="modal"/>
 </template>
 
 <style lang="scss">

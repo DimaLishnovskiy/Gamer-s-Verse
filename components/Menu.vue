@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import ContactUs from "~/components/ContactUs.vue";
+
 const { mobile } = useDisplay();
 const menuLeft = [
   {
@@ -21,8 +23,7 @@ const menuLeft = [
 const menuRight = [
   {
     name: "Contact us",
-    to: "/contact-us",
-    route: "contact-us"
+    action: () => { modal.value = true }
   },
   {
     name: "About us",
@@ -35,6 +36,7 @@ const route = useRoute()
 
 const selected = ref();
 const burgerClick = ref(false)
+const modal = ref(false)
 </script>
 
 <template>
@@ -50,7 +52,10 @@ const burgerClick = ref(false)
                 </v-sheet>
                 <nuxt-img src="/logo_text.svg" :width="mobile ? 134 : 289"></nuxt-img>
                 <v-sheet max-width="227" class="d-flex w-100 justify-space-between bg-transparent">
-                  <nuxt-link :to="item.to" class="text-uppercase text-decoration-none custom-white title fs-16" v-for="item in menuRight">{{ item.name }}</nuxt-link>
+                  <template v-for="right in menuRight">
+                    <span v-if="right.action" @click="right.action()" class="text-uppercase text-decoration-none custom-white title fs-16">{{ right.name }}</span>
+                    <nuxt-link v-else :to="right.to" class="text-uppercase text-decoration-none custom-white title fs-16">{{ right.name }}</nuxt-link>
+                  </template>
                 </v-sheet>
               </div>
             </v-col>
@@ -75,7 +80,10 @@ const burgerClick = ref(false)
             <v-item-group v-model="selected" mandatory>
               <v-list-item-title v-for="(filter) in menuRight.concat(menuLeft)" class="py-6 text-center">
                 <v-item :value="filter">
-                  <nuxt-link v-if="route.name != filter.route" :to="`${filter.to}`" class="title text-decoration-none text-uppercase cursor-pointer font-weight-medium fs-16">
+                  <span v-if="filter.action" @click="filter.action()" class="title text-decoration-none text-uppercase cursor-pointer font-weight-medium fs-16 text-white">
+                    {{filter.name}}
+                  </span>
+                  <nuxt-link v-else-if="route.name != filter.route" :to="`${filter.to}`" class="title text-decoration-none text-uppercase cursor-pointer font-weight-medium fs-16">
                     <span class="custom-white">{{ filter.name }}</span>
                   </nuxt-link>
                   <div v-else class="menu__gold-button cursor-default">
@@ -88,7 +96,11 @@ const burgerClick = ref(false)
         </v-menu>
       </div>
     </template>
+
+    <ContactUs v-model="modal"></ContactUs>
   </header>
+
+
 </template>
 
 <style scoped lang="scss">

@@ -21,19 +21,21 @@ const allGames = [
   "/games/wot.png",
   "/games/tarkov.png",
 ];
+
+const display = ref(useDisplay());
 </script>
 
 <template>
   <v-container class="py-0" :max-width="useCalcContainer(912)">
     <div class="d-flex justify-center align-center flex-column">
-      <h2 class="text-white fs-40 font-weight-bold text-center text-uppercase title mb-9">
-        <span class="d-block">When we say <span>any game</span> </span>
+      <h2 class="text-white fs-40 font-weight-bold text-center text-uppercase title mb-4 mb-lg-9">
+        <span class="d-block">When we say <span class="text-img">any game</span> </span>
         <span>we mean it</span>
       </h2>
     </div>
   </v-container>
 
-  <vue3-marquee :duration="120" class="mb-15">
+  <vue3-marquee :duration="120" class="mb-10 mb-lg-15">
     <div v-for="game in allGames" class="d-flex px-3">
       <v-sheet class="main__game bg-transparent" width="277" height="146">
         <img :src="game" alt="">
@@ -43,7 +45,9 @@ const allGames = [
 
   <v-container class="py-0">
     <div class="d-flex justify-center align-center flex-column">
-      <v-btn height="64">Explore all games</v-btn>
+      <button @click="navigateTo('/games')" class="gold-button d-flex justify-center align-center flex-column" :style="display.xs ? 'width: 256px' : 'width: 278px'">
+        Explore all games
+      </button>
     </div>
   </v-container>
 </template>

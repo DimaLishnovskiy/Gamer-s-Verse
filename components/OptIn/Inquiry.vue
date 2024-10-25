@@ -45,8 +45,8 @@ const submit = () => {
     <v-sheet class="field__wrapper bg-transparent">
       <v-textarea v-model="request" @input="success = false" :rows="display.smAndUp ? 7 : 9" placeholder="YOUR REQUEST" variant="plain" type="text" hide-details class="custom-input h-100" rounded="0"></v-textarea>
     </v-sheet>
-    <v-sheet class="mb-4 bg-transparent text-center d-flex align-center justify-center " height="24">
-      <p class="fs-10 title custom-yellow font-weight-regular text-uppercase" v-if="success">Message Sent</p>
+    <v-sheet class="mb-4 bg-transparent text-center d-flex align-center justify-center"  height="24">
+      <p class="title custom-yellow font-weight-regular text-uppercase" :class="display.lgAndUp ? 'fs-16' : 'fs-12'" v-if="success">Message Sent, our team will reach you soon!</p>
     </v-sheet>
     <div class="d-flex justify-center justify-sm-end">
       <button @click="submit()" class="gold-button" :style="display.xs ? 'width: 294px' : 'width: 239px'">
@@ -78,6 +78,10 @@ const submit = () => {
       border: 1px solid #E27070;
       transition: border 0.3s ease;
     }
+  }
+
+  &__email-error-message {
+    color: #E27070;
   }
 
   .custom-input {
