@@ -1,10 +1,10 @@
 <script setup lang="ts">
 
 const images = [
-  "/messanger.png",
-  "/instagram.png",
-  "/whatsapp.png",
-  "/schedule.png",
+  { icon: "/messenger_img.png", name: "Messenger", to: "https://m.me/gamingtheballhardsway?ref=w26367461" },
+  { icon: "/instagram_img.png", name: "Instagram", to: "https://instagram.com/p/CsBeAvit0V3/" },
+  { icon: "/trustpilot_img.png", name: "Trustpilot", to: "https://www.trustpilot.com/review/ballhardsden.com" },
+  { icon: "/call_img.png", name: "Schedule a Call", to: "https://calendly.com/ballhardsden" },
 ];
 
 const display = ref(useDisplay());
@@ -54,12 +54,14 @@ const submit = () => {
           </div>
 
           <v-sheet class="d-flex bg-transparent ga-2 justify-center justify-sm-space-between w-100 flex-wrap mb-6 mb-sm-8">
-            <v-sheet v-for="image in images" :key="image" width="100%" :max-width="display.lgAndUp ? 168 : '48%'" :height="display.smAndUp ? 102 : 92" class="contactus__social bg-transparent d-flex justify-center align-center">
-              <v-sheet class="d-flex justify-center bg-transparent" height="100%" max-height="49px" width="100%">
-                <nuxt-img :src="image"></nuxt-img>
-              </v-sheet>
+            <v-sheet v-for="image in images" width="100%" :max-width="display.lgAndUp ? 168 : '48%'" :height="display.smAndUp ? 102 : 92" class="contactus__social bg-transparent d-flex justify-center align-center">
+              <nuxt-link :href="image.to" class="text-decoration-none w-100 h-100 d-flex justify-center bg-transparent flex-column align-center" target="_blank">
+                <nuxt-img width="24" height="24" :src="image.icon" class="mb-3"></nuxt-img>
+                <span class="text-img title font-weight-regular text-uppercase text-center" :class="display.xs ? 'fs-14' : 'fs-16'">{{ image.name }}</span>
+              </nuxt-link>
             </v-sheet>
           </v-sheet>
+
 
           <div class="contactus__divider mb-6 mb-sm-8"></div>
 
