@@ -4,39 +4,56 @@ import ContactUs from "~/components/ContactUs.vue";
 const { mobile } = useDisplay();
 const menuLeft = [
   {
-    name: "Home",
-    to: "/",
-    route: "index"
-  },
-  {
     name: "Games",
     to: "/games",
     route: "games"
   },
   {
-    name: "Find game",
-    to: "/find-game",
-    route: "find-game"
+    name: "Game request",
+    to: "/game-request",
+    route: "game-request"
   },
 ];
 
 const menuRight = [
   {
     name: "Contact us",
-    action: () => { modal.value = true }
+    action: () => {
+      modal.value = true;
+    }
   },
   {
     name: "About us",
     to: "/about-us",
     route: "about-us"
   },
+  {
+    name: "Home",
+    to: "/",
+    route: "index"
+
+  },
 ];
 
-const route = useRoute()
+onMounted(() => {
+  watchEffect(() => {
+    if (burgerClick.value) {
+      document.documentElement.classList.add('no-scroll');
+    } else {
+      document.documentElement.classList.remove('no-scroll');
+    }
+  });
+})
+
+const route = useRoute();
 
 const selected = ref();
-const burgerClick = ref(false)
-const modal = ref(false)
+const burgerClick = ref(false);
+const modal = ref(false);
+
+const closeMenu = () => {
+  burgerClick.value = false;
+};
 </script>
 
 <template>
@@ -46,15 +63,19 @@ const modal = ref(false)
         <v-sheet fluid width="100%" :max-width="useCalcContainer(944)" class="bg-transparent">
           <v-row no-gutters>
             <v-col cols="12">
-              <div class="d-flex align-center justify-space-between pr-15">
-                <v-sheet max-width="284" class="d-flex w-100 justify-space-between bg-transparent">
+              <div class="d-flex align-center justify-space-between">
+                <v-sheet max-width="260" class="d-flex w-100 justify-space-between bg-transparent">
                   <nuxt-link :to="item.to" class="text-uppercase text-decoration-none custom-white title fs-16" v-for="item in menuLeft">{{ item.name }}</nuxt-link>
                 </v-sheet>
-                <nuxt-img src="/logo_text.svg" :width="mobile ? 134 : 289"></nuxt-img>
-                <v-sheet max-width="227" class="d-flex w-100 justify-space-between bg-transparent">
+                <nuxt-link to="/">
+                  <nuxt-img src="/logo_text.svg" :width="mobile ? 134 : 289"></nuxt-img>
+                </nuxt-link>
+                <v-sheet max-width="260" class="d-flex w-100 justify-space-between bg-transparent">
                   <template v-for="right in menuRight">
-                    <span v-if="right.action" @click="right.action()" class="text-uppercase text-decoration-none custom-white title fs-16 cursor-pointer">{{ right.name }}</span>
-                    <nuxt-link v-else :to="right.to" class="text-uppercase text-decoration-none custom-white title fs-16">{{ right.name }}</nuxt-link>
+                    <template v-if="right.name != 'Home'">
+                      <span v-if="right.action" @click="right.action()" class="text-uppercase text-decoration-none custom-white title fs-16 cursor-pointer">{{ right.name }}</span>
+                      <nuxt-link v-else :to="right.to" class="text-uppercase text-decoration-none custom-white title fs-16">{{ right.name }}</nuxt-link>
+                    </template>
                   </template>
                 </v-sheet>
               </div>
@@ -65,7 +86,7 @@ const modal = ref(false)
     </template>
     <template v-if="mobile">
       <div class="d-flex justify-center align-center pl-9 pr-2">
-        <img class="mx-auto" :width="mobile ? 134 : 289" src="/logo_text.svg" >
+        <img @click="navigateTo('/')" class="mx-auto cursor-pointer" :width="mobile ? 180 : 289" src="/logo_text.svg">
 
         <v-menu class="position-absolute" width="353" open-on-click v-model="burgerClick" style="position: absolute; right: 0;">
           <template v-slot:activator="{ props }">
@@ -81,13 +102,13 @@ const modal = ref(false)
               <v-list-item-title v-for="(filter) in menuRight.concat(menuLeft)" class="py-6 text-center">
                 <v-item :value="filter">
                   <span v-if="filter.action" @click="filter.action()" class="title text-decoration-none text-uppercase cursor-pointer font-weight-medium fs-16 text-white ">
-                    {{filter.name}}
+                    {{ filter.name }}
                   </span>
                   <nuxt-link v-else-if="route.name != filter.route" :to="`${filter.to}`" class="title text-decoration-none text-uppercase cursor-pointer font-weight-medium fs-16">
                     <span class="custom-white">{{ filter.name }}</span>
                   </nuxt-link>
                   <div v-else class="menu__gold-button cursor-default">
-                    {{filter.name}}
+                    {{ filter.name }}
                   </div>
                 </v-item>
               </v-list-item-title>
@@ -103,7 +124,14 @@ const modal = ref(false)
 
 </template>
 
+<style>
+.no-scroll {
+  overflow: hidden !important;
+}
+</style>
+
 <style scoped lang="scss">
+
 .menu {
 
   &__gold-button {
@@ -143,7 +171,6 @@ const modal = ref(false)
   }
 
 
-
   &__mobile-opened {
     background: #002E21 !important;
   }
@@ -165,7 +192,7 @@ const modal = ref(false)
 }
 
 .menu-wrapper:hover .menu-bar.active {
-  animation:none;
+  animation: none;
 }
 
 </style>

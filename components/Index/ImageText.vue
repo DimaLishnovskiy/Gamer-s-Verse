@@ -27,7 +27,7 @@ const imgText = computed(() => {
 <template>
   <v-container class="py-0 px-5" max-width="1123">
     <div class="d-flex flex-column">
-      <div class="main__images-texts d-flex justify-center align-center flex-column ga-6 ga-lg-10">
+      <div class="main__images-texts d-flex justify-center align-center flex-column">
         <div v-for="(item, key) in imgText" :key='key' class="d-flex flex-column align-center w-100">
           <h3 class="fs-36 font-weight-bold title text-white text-center mb-4 mb-lg-11 text-uppercase" v-html="item.title"></h3>
           <nuxt-img width="80" class="mb-6 mb-lg-8" src="/index/divider.png"></nuxt-img>
@@ -50,6 +50,16 @@ const imgText = computed(() => {
 
 <style lang="scss">
 .main {
+  &__images-texts {
+    margin-bottom: 109px;
+    gap: 100px !important;
+
+    @media(max-width: 1200px) {
+      margin-bottom: 40px;
+      gap: 24px !important;
+    }
+  }
+
   &__info-cards {
     margin-bottom: 180px;
 

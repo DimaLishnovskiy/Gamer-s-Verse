@@ -64,7 +64,7 @@ const { mobile } = useDisplay();
               <span class="d-block d-md-inline text-center"><span class="text-img">movement</span> of </span>
               <span class="d-block d-md-inline text-center">Ball Hard’s!</span>
             </h2>
-            <span class="title font-weight-medium fs-18 text-uppercase text-white mb-15">log in... ball out... and bounce.</span>
+            <span class="custom-yellow about_login title font-weight-medium fs-18 text-uppercase mb-15">log in... ball out... and bounce.</span>
             <button @click="navigateTo('/games')" class="gold-button">Fulfill Your Gaming Dreams</button>
           </v-col>
         </v-row>
@@ -91,6 +91,10 @@ const { mobile } = useDisplay();
   background-size: cover;
   width: 100%;
   height: 100%;
+
+  &__login {
+    color: #FAE97E;
+  }
 
   &__menu {
     margin-bottom: 137px;

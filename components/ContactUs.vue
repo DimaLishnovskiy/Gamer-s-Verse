@@ -3,7 +3,7 @@
 const images = [
   { icon: "/messenger_img.png", name: "Messenger", to: "https://m.me/gamingtheballhardsway?ref=w26367461" },
   { icon: "/instagram_img.png", name: "Instagram", to: "https://instagram.com/p/CsBeAvit0V3/" },
-  { icon: "/trustpilot_img.png", name: "Trustpilot", to: "https://www.trustpilot.com/review/ballhardsden.com" },
+  { icon: "mingcute:whatsapp-fill", name: "WhatsApp", to: "" },
   { icon: "/call_img.png", name: "Schedule a Call", to: "https://calendly.com/ballhardsden" },
 ];
 
@@ -26,6 +26,10 @@ const submit = () => {
     emailErrorMessage.value = emailRules.map((rule) => rule(email.value)).find((msg) => typeof msg === 'string') || '';
   } else {
     success.value = true;
+    emailErrorMessage.value = ""
+    email.value = ""
+    request.value = ""
+    game.value = "";
   }
 };
 </script>
@@ -54,9 +58,10 @@ const submit = () => {
           </div>
 
           <v-sheet class="d-flex bg-transparent ga-2 justify-center justify-sm-space-between w-100 flex-wrap mb-6 mb-sm-8">
-            <v-sheet v-for="image in images" width="100%" :max-width="display.lgAndUp ? 168 : '48%'" :height="display.smAndUp ? 102 : 92" class="contactus__social bg-transparent d-flex justify-center align-center">
+            <v-sheet :class="{'disabled': image.to === ''}" v-for="image in images" width="100%" :max-width="display.lgAndUp ? 168 : '48%'" :height="display.smAndUp ? 102 : 92" class="contactus__social bg-transparent d-flex justify-center align-center">
               <nuxt-link :href="image.to" class="text-decoration-none w-100 h-100 d-flex justify-center bg-transparent flex-column align-center" target="_blank">
-                <nuxt-img width="24" height="24" :src="image.icon" class="mb-3"></nuxt-img>
+                <nuxt-img v-if="image.to !== ''" width="24" height="24" :src="image.icon" class="text-img mb-3"></nuxt-img>
+                <icon v-else name="mingcute:whatsapp-fill" size="28" class="mb-2 text-icon"></icon>
                 <span class="text-img title font-weight-regular text-uppercase text-center" :class="display.xs ? 'fs-14' : 'fs-16'">{{ image.name }}</span>
               </nuxt-link>
             </v-sheet>
@@ -68,7 +73,7 @@ const submit = () => {
           <v-form v-model="form" class="bg-transparent mb-8" @submit.prevent>
             <h3 class="fs-20 title font-weight-regular custom-yellow text-uppercase mb-6">Email Us</h3>
 
-            <div class="d-flex flex-column flex-lg-row align-start justify-center ga-3">
+            <div class="d-flex flex-column flex-lg-row align-start justify-center ga-1">
               <div :class="display.lgAndUp ? 'w-40' : 'w-100'">
                 <div :class="emailErrorMessage != '' ? 'contactus__field__wrapper-error' : 'contactus__field__wrapper'">
                   <v-text-field v-model="email"
@@ -84,8 +89,8 @@ const submit = () => {
                                 rounded="0">
                   </v-text-field>
                 </div>
-                <v-sheet v-if="emailErrorMessage && display.mobile" class="bg-transparent d-flex align-center justify-center" height="24">
-                  <p class="opt__email-error-message fs-10 text-center text-uppercase title">{{ emailErrorMessage }}</p>
+                <v-sheet v-if="display.mobile"  class="bg-transparent d-flex align-center justify-center" height="24">
+                  <p v-if="emailErrorMessage" class="opt__email-error-message fs-10 text-center text-uppercase title">{{ emailErrorMessage }}</p>
                 </v-sheet>
               </div>
 
@@ -96,12 +101,12 @@ const submit = () => {
                 <v-sheet v-else class="contactus__field__wrapper bg-transparent">
                   <v-textarea v-model="request" @input="success = false" :rows="display.lgAndUp ? 1 : 9" placeholder="Your Message" variant="plain" type="text" hide-details class="contactus__custom-input h-100" rounded="0"></v-textarea>
                 </v-sheet>
-                <v-sheet v-if="display.mobile" class="bg-transparent justify-center justify-lg-start d-flex align-center mb-2 mb-lg-0" height="24">
+                <v-sheet v-if="display.mobile" class="bg-transparent justify-center justify-lg-start d-flex align-end mb-3 mb-lg-0" :height="display.mobile ? 32 : 40">
                   <p class="fs-10 title  custom-yellow font-weight-regular text-uppercase" :class="display.lgAndUp ? 'fs-16' : 'fs-12'" v-if="success">Message Sent</p>
                 </v-sheet>
               </div>
             </div>
-            <v-sheet v-if="!display.mobile" class="bg-transparent d-flex align-center mb-2 mb-lg-0" height="24">
+            <v-sheet v-if="!display.mobile" class="bg-transparent d-flex align-end mb-3" :class="emailErrorMessage ? 'align-center' : 'align-end'" :height="display.mobile ? 32 : 40">
               <p class="opt__email-error-message fs-10 text-center text-uppercase title">{{ emailErrorMessage }}</p>
               <p class="title custom-yellow font-weight-regular text-uppercase mx-auto" :class="display.lgAndUp ? 'fs-16' : 'fs-12'" v-if="success">Message Sent, our team will reach you soon!</p>
             </v-sheet>
@@ -170,6 +175,19 @@ const submit = () => {
 
     &:hover {
       border: 1px solid #FAE97E !important;
+    }
+
+    &.disabled {
+      border: 1px solid rgba(153, 153, 153, 0.95) !important;
+      background-image: url('/noise_disabled.png') !important;
+
+      .text-icon {
+        color: rgba(153, 153, 153, 0.95);
+      }
+
+      .text-img {
+        color: rgba(153, 153, 153, 0.95);
+      }
     }
   }
 
@@ -263,7 +281,7 @@ const submit = () => {
         }
 
         &::placeholder {
-          color: rgba(250, 233, 126, 1);
+          color: rgba(250, 233, 126, 0.5);
           text-transform: uppercase;
           font-size: 18px;
           font-weight: 600;

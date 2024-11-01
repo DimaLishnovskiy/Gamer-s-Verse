@@ -16,6 +16,10 @@ const submit = () => {
     emailErrorMessage.value = emailRules.map((rule) => rule(email.value)).find((msg) => typeof msg === 'string') || '';
   } else {
     success.value = true;
+    emailErrorMessage.value = ""
+    email.value = ""
+    request.value = ""
+    game.value = "";
   }
 };
 </script>
@@ -40,12 +44,12 @@ const submit = () => {
       <p class="opt__email-error-message fs-10 text-center text-uppercase title">{{ emailErrorMessage }}</p>
     </v-sheet>
     <div class="field__wrapper mb-6">
-      <v-text-field v-model="game" @input="success = false" placeholder="write your game" variant="plain" type="text" hide-details class="custom-input" rounded="0"></v-text-field>
+      <v-text-field v-model="game" @input="success = false" placeholder="GAME YOU PLAY" variant="plain" type="text" hide-details class="custom-input" rounded="0"></v-text-field>
     </div>
     <v-sheet class="field__wrapper bg-transparent">
       <v-textarea v-model="request" @input="success = false" :rows="display.smAndUp ? 7 : 9" placeholder="YOUR REQUEST" variant="plain" type="text" hide-details class="custom-input h-100" rounded="0"></v-textarea>
     </v-sheet>
-    <v-sheet class="mb-4 bg-transparent text-center d-flex align-center justify-center"  height="24">
+    <v-sheet class="mb-4 bg-transparent text-center d-flex align-end justify-center" :height="display.mobile ? 32 : 40">
       <p class="title custom-yellow font-weight-regular text-uppercase" :class="display.lgAndUp ? 'fs-16' : 'fs-12'" v-if="success">Message Sent, our team will reach you soon!</p>
     </v-sheet>
     <div class="d-flex justify-center justify-sm-end">

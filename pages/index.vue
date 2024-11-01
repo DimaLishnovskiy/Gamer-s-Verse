@@ -1,3 +1,31 @@
+<script setup>
+import "swiper/css";
+import "swiper/css/navigation";
+import { useDisplay } from "vuetify";
+import VideoSwiper from "~/components/Index/VideoSwiper.vue";
+import ImageText from "~/components/Index/ImageText.vue";
+import { useCalcContainer } from "~/composables/useCalcContainer";
+import Marquee from "~/components/Index/Marquee.vue";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import Comments from "~/components/Index/Comments.vue";
+
+const { mobile, xs } = useDisplay();
+
+
+const display = ref(useDisplay())
+const infoCards = [
+  "RANK AND LEVEL BOOSTING",
+  "gold",
+  "questing",
+  "RAID AND DUNGEON RUNS",
+  "skin unlocks",
+  "coaching",
+];
+
+</script>
+
+
 <template>
   <div class="main">
     <Menu class="pt-4 pt-lg-10 main__menu"/>
@@ -19,9 +47,16 @@
 
     <section class="main__video mb-11 mb-lg-16 position-relative">
       <v-container class="py-0 position-relative d-flex justify-center" max-width="818">
-        <nuxt-img src="/index/main_video.png" class="w-100" ></nuxt-img>
+        <p>
+          <a href="https://test-osrs-gold.vercel.app?wvideo=j06n24g3j8">
+            <img class="main__video-block"
+              src="https://embed-ssl.wistia.com/deliveries/4db1643e0f6cff65483194a73f44c743.jpg?image_play_button_size=2x&image_crop_resized=960x540&image_play_button=1&image_play_button_color=000000e0"
+              alt="Video Thumbnail"
+              style="max-width: 100%; height: auto;">
+          </a>
+        </p>
         <div class="main__pointers overflow-hidden" v-if="!mobile">
-          <nuxt-img class="main__pointer" height="758" src="/index/man_pointing.png"></nuxt-img>
+          <nuxt-img class="main__pointer" height="720" src="/index/man_pointing.png"></nuxt-img>
           <img class="main__pointer-shadow" src="/index/man_pointing_shadow.png">
         </div>
 
@@ -31,7 +66,7 @@
         </div>
         <div class="overflow-hidden" v-if="display.xs">
           <nuxt-img class="main__stick" height="304" src="/index/man_stick_crop.png"></nuxt-img>
-          <nuxt-img class="main__stick-shadow" height="301" src="/index/man_stick_crop_shadow.png"></nuxt-img>
+          <nuxt-img class="main__stick-shadow-crop" height="301" src="/index/man_stick_shadow_crop.png"></nuxt-img>
         </div>
       </v-container>
     </section>
@@ -78,32 +113,6 @@
   </div>
 </template>
 
-<script setup>
-import "swiper/css";
-import "swiper/css/navigation";
-import { useDisplay } from "vuetify";
-import VideoSwiper from "~/components/Index/VideoSwiper.vue";
-import ImageText from "~/components/Index/ImageText.vue";
-import { useCalcContainer } from "~/composables/useCalcContainer";
-import Marquee from "~/components/Index/Marquee.vue";
-import 'swiper/css';
-import 'swiper/css/pagination';
-import Comments from "~/components/Index/Comments.vue";
-
-const { mobile, xs } = useDisplay();
-
-const display = ref(useDisplay())
-const infoCards = [
-  "RANK AND LEVEL BOOSTING",
-  "gold",
-  "questing",
-  "RAID AND DUNGEON RUNS",
-  "skin unlocks",
-  "coaching",
-];
-
-</script>
-
 <style lang="scss">
 
 
@@ -114,10 +123,34 @@ const infoCards = [
   background-position: bottom;;
   position: relative;
 
+  &__video-block {
+    border: 16px solid transparent; /* Прозора основа для картинки */
+    border-image: url('/gold.png') 30 round;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    /* Масштабування товщини рамки для різних розмірів екрану */
+    @media (max-width: 1200px) {
+      border-width: 9px;
+    }
+    @media (max-width: 992px) {
+      border-width: 9px;
+    }
+    @media (max-width: 768px) {
+      border-width: 7px;
+    }
+    @media (max-width: 576px) {
+      border-width: 7px;
+    }
+  }
   @media(max-width: 1200px) {
     background-image: none;
   }
 
+  &__info-cards {
+    position: relative;
+    z-index: 5;
+  }
   &__swiper-wrapper {
     margin-bottom: 89px;
 
@@ -198,14 +231,6 @@ const infoCards = [
     }
   }
 
-  &__images-texts {
-    margin-bottom: 109px;
-
-    @media(max-width: 1200px) {
-      margin-bottom: 40px;
-    }
-  }
-
   &__swiper {
     margin-bottom: 139px;
 
@@ -217,15 +242,15 @@ const infoCards = [
   &__pointer {
     position: absolute;
     z-index: 10;
-    top: 10%;
-    right: -25%;
+    top: 12%;
+    right: -23%;
   }
 
   &__pointer-shadow {
     position: absolute;
     z-index: 4;
-    right: -22%;
-    top: 162%;
+    right: -21%;
+    top: 159%;
   }
 
   &__stick {
@@ -239,10 +264,18 @@ const infoCards = [
 
   &__stick-shadow {
     position: absolute;
-    z-index: 4;
+    z-index: 0;
+    right: -3px;
+    bottom: -466px;
+    height: 340px;
+  }
+
+  &__stick-shadow-crop {
+    position: absolute;
+    z-index: 0;
     right: 0;
-    bottom: -420px;
-    height: 300px;
+    bottom: -468px;
+    height: 340px;
   }
 
   &__city {

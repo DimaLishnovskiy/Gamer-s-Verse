@@ -6,7 +6,7 @@ import Contact from "~/components/Contact.vue";
 
 <template>
   <v-app class="bg-transparent">
-    <Header />
+    <Header v-if="false"/>
     <v-main>
       <NuxtPage/>
     </v-main>
