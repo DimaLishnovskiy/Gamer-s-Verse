@@ -29,7 +29,7 @@ const infoCards = [
 <template>
   <div class="main">
     <Menu class="pt-4 pt-lg-10 main__menu"/>
-    <nuxt-img class="main__city" :src="xs ? '/index/city_mobile_bg.svg' : '/index/city.svg'"></nuxt-img>
+    <nuxt-img class="main__city" :src="xs ? '/index/city_mobile_bg.svg' : '/index/city.png'"></nuxt-img>
 
     <section class="main__top-block mb-12 mb-lg-15">
       <v-container :max-width="useCalcContainer(896)" class="py-0">
@@ -40,7 +40,9 @@ const infoCards = [
           </h1>
           <p class="fs-16 font-weight-medium title custom-yellow mb-2">7000+ happy clients</p>
           <nuxt-img class="mb-2" width="128" src="/index/stars.png"></nuxt-img>
-          <nuxt-img class="main__trustpilot" width="106" src="/index/trustpilot.png"></nuxt-img>
+          <nuxt-link target="_blank" href="https://www.trustpilot.com/review/ballhardsden.com" >
+            <nuxt-img  class="main__trustpilot" width="106" src="/index/trustpilot.png"></nuxt-img>
+          </nuxt-link>
         </div>
       </v-container>
     </section>
@@ -99,7 +101,7 @@ const infoCards = [
         <div class="d-flex justify-center flex-column align-center">
           <span class="fs-20 text-uppercase text-white font-weight-medium mb-2">Rated <span class="text-img fs-24">4.9</span> out of <span class="fs-24 text-img">5</span> based on <span class="fs-24 text-img">333</span> reviews.</span>
           <img class="mb-2" src="/index/stars.png">
-          <img class="main__trustpilot" src="/index/trustpilot.png">
+          <nuxt-link target="_blank" href="https://www.trustpilot.com/review/ballhardsden.com"><img class="main__trustpilot" src="/index/trustpilot.png"></nuxt-link>
         </div>
       </v-container>
     </section>
@@ -224,6 +226,8 @@ const infoCards = [
   }
 
   &__img-text {
+    position: relative;
+    z-index: 5;
     margin-bottom: 102px;
 
     @media(max-width: 1200px) {
@@ -283,6 +287,7 @@ const infoCards = [
     z-index: 1;
     top: 0;
     width: 100%;
+    mix-blend-mode: darken;
   }
 
   &__menu {

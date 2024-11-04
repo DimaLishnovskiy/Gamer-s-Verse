@@ -13,7 +13,7 @@ const modal = ref(false)
           <p class="fs-40 text-uppercase text-white title font-weight-bold mb-4">contact <span class="text-img">support</span></p>
           <p class="text-white text-uppercase title fs-20 font-weight-medium mb-7">Need further assistance with your <span class="d-block d-sm-inline">order?</span></p>
           <button @click="modal = true" class="gold-button" :style="display.xs ? 'width: 218px' : 'width: 231px'">
-            <Icon name="solar:chat-round-dots-bold" size="18"></Icon>
+            <Icon class="mb-1" name="solar:chat-round-dots-bold" size="18"></Icon>
             Contact Us
           </button>
         </div>

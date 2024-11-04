@@ -114,18 +114,17 @@ watch(activeSlideIndex, updateVideoPlayback);
         >
           <swiper-slide class="position-relative" v-for="(videoSrc, index) in videoSources" :key="index">
             <div>
-              <video :id="`video-${index}`" :width="display.xs ? 190 : 258" :height="display.xs ? 327 : 442" @click="!isPlaying ? {} : isVisible = !isVisible">
+              <video class="cursor-pointer" :id="`video-${index}`" :width="display.xs ? 190 : 258" :height="display.xs ? 327 : 442" @click="toggleVideo(); isVisible = !isVisible">
                 :src="`https://www.youtube.com/embed/${videoSrc}
                 <source :src="`/videos/${videoSrc}.mp4`" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
+              <v-sheet width="50" height="50" class="play-button bg-transparent " @click="toggleVideo(); (display.mobile && isPlaying) ? isVisible=false : {}" @mouseover="!isPlaying ? {} : isVisible = true" @mouseleave="!isPlaying ? {} : isVisible = false">
+                <nuxt-img width="50" :src="isPlaying ? 'stop.png': `/index/video_play.png`" v-show="isVisible" @mouseover="isOn = true" @mouseleave="isOn = false"></nuxt-img>
+              </v-sheet>
             </div>
           </swiper-slide>
         </swiper>
-
-        <v-sheet width="50" height="50" class="play-button bg-transparent " @click="toggleVideo(); (display.mobile && isPlaying) ? isVisible=false : {}" @mouseover="!isPlaying ? {} : isVisible = true" @mouseleave="!isPlaying ? {} : isVisible = false">
-          <nuxt-img width="50" src="/index/video_play.png" v-show="isVisible" @mouseover="isOn = true" @mouseleave="isOn = false"></nuxt-img>
-        </v-sheet>
 
         <div class="custom-prev">
           <nuxt-img width="43" src="/index/slide_prev.png" alt="Image 4"></nuxt-img>
@@ -172,14 +171,18 @@ watch(activeSlideIndex, updateVideoPlayback);
     border-style: solid;
     transition: border-image-source 0.3s ease;
   }
-  
+
   .play-button {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 60%;
     transform: translate(-40%, -50%);
     cursor: pointer;
     z-index: 1;
+
+    @media(max-width: 600px) {
+      left: 46%;
+    }
   }
 
   &:hover .play-button {

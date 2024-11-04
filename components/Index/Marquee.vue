@@ -4,22 +4,24 @@ import { Vue3Marquee } from "vue3-marquee";
 import { useCalcContainer } from "~/composables/useCalcContainer";
 
 const allGames = [
-  "/games/warcraft.svg",
-  "/games/runescape.svg",
-  "/games/league_legends.svg",
-  "/games/diablo.svg",
-  "/games/fifa.svg",
-  "/games/dota.png",
-  "/games/valorant.png",
-  "/games/exile.png",
-  "/games/apex.png",
-  "/games/cs2.png",
-  "/games/final.png",
-  "/games/fortnite.png",
-  "/games/overwatch.png",
-  "/games/call.png",
-  "/games/wot.png",
-  "/games/tarkov.png",
+  { src: "/games/warcraft.svg", name: "World of Warcraft" },
+  { src: "/games/runescape.svg", name: "Runescape" },
+  { src: "/games/league_legends.svg", name: "League of Legends" },
+  { src: "/games/diablo.svg", name: "Diablo" },
+  { src: "/games/exile.png", name: "Path of Exile" },
+  { src: "/games/fortnite.png", name: "Fortnite" },
+  { src: "/games/call.png", name: "Call of Duty" },
+  { src: "/games/fifa.svg", name: "FIFA" },
+  { src: "/games/final.png", name: "Final Fantasy" },
+  { src: "/games/tarkov.png", name: "Escape from Tarkov" },
+  { src: "/games/dota.png", name: "Dota" },
+  { src: "/games/overwatch.png", name: "Overwatch" },
+  { src: "/games/valorant.png", name: "Valorant" },
+  { src: "/games/apex.png", name: "Apex Legends" },
+  { src: "/games/rune_scape_old.png", name: "Runescape old" },
+  { src: "/games/pocket.png", name: "Pocket League" },
+  { src: "/games/cs2.png", name: "Counter Strike 2" },
+  { src: "/games/wot.png", name: "World of Tanks" },
 ];
 
 const display = ref(useDisplay());
@@ -35,10 +37,10 @@ const display = ref(useDisplay());
     </div>
   </v-container>
 
-  <vue3-marquee :duration="120" class="mb-10 mb-lg-15">
+  <vue3-marquee :duration="75" class="mb-10 mb-lg-15">
     <div v-for="game in allGames" class="d-flex px-3">
       <v-sheet class="main__game bg-transparent" width="277" height="146">
-        <img :src="game" alt="">
+        <img :src="game.src" alt="">
       </v-sheet>
     </div>
   </vue3-marquee>

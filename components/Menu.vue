@@ -31,9 +31,37 @@ const menuRight = [
     name: "Home",
     to: "/",
     route: "index"
-
   },
 ];
+
+const menuMobile = [
+  {
+    name: "Home",
+    to: "/",
+    route: "index"
+  },
+  {
+    name: "Games",
+    to: "/games",
+    route: "games"
+  },
+  {
+    name: "Game request",
+    to: "/game-request",
+    route: "game-request"
+  },
+  {
+    name: "Contact us",
+    action: () => {
+      modal.value = true;
+    }
+  },
+  {
+    name: "About us",
+    to: "/about-us",
+    route: "about-us"
+  },
+]
 
 onMounted(() => {
   watchEffect(() => {
@@ -64,17 +92,17 @@ const closeMenu = () => {
           <v-row no-gutters>
             <v-col cols="12">
               <div class="d-flex align-center justify-space-between">
-                <v-sheet max-width="260" class="d-flex w-100 justify-space-between bg-transparent">
-                  <nuxt-link :to="item.to" class="text-uppercase text-decoration-none custom-white title fs-16" v-for="item in menuLeft">{{ item.name }}</nuxt-link>
+                <v-sheet max-width="260" class="menu__link d-flex w-100 justify-space-between bg-transparent">
+                  <nuxt-link :to="item.to" class="text-uppercase text-decoration-none title fs-16" v-for="item in menuLeft">{{ item.name }}</nuxt-link>
                 </v-sheet>
                 <nuxt-link to="/">
                   <nuxt-img src="/logo_text.svg" :width="mobile ? 134 : 289"></nuxt-img>
                 </nuxt-link>
-                <v-sheet max-width="260" class="d-flex w-100 justify-space-between bg-transparent">
+                <v-sheet max-width="260" class="menu__link  d-flex w-100 justify-space-between bg-transparent">
                   <template v-for="right in menuRight">
                     <template v-if="right.name != 'Home'">
-                      <span v-if="right.action" @click="right.action()" class="text-uppercase text-decoration-none custom-white title fs-16 cursor-pointer">{{ right.name }}</span>
-                      <nuxt-link v-else :to="right.to" class="text-uppercase text-decoration-none custom-white title fs-16">{{ right.name }}</nuxt-link>
+                      <span v-if="right.action" @click="right.action()" class="text-uppercase text-decoration-none  title fs-16 cursor-pointer">{{ right.name }}</span>
+                      <nuxt-link v-else :to="right.to" class="text-uppercase text-decoration-none  title fs-16">{{ right.name }}</nuxt-link>
                     </template>
                   </template>
                 </v-sheet>
@@ -99,7 +127,7 @@ const closeMenu = () => {
 
           <v-list class="menu__mobile-opened pa-3" variant="text" width="100%">
             <v-item-group v-model="selected" mandatory>
-              <v-list-item-title v-for="(filter) in menuRight.concat(menuLeft)" class="py-6 text-center">
+              <v-list-item-title v-for="(filter) in menuMobile" class="py-6 text-center">
                 <v-item :value="filter">
                   <span v-if="filter.action" @click="filter.action()" class="title text-decoration-none text-uppercase cursor-pointer font-weight-medium fs-16 text-white ">
                     {{ filter.name }}
@@ -137,6 +165,17 @@ const closeMenu = () => {
 <style scoped lang="scss">
 
 .menu {
+
+  &__link {
+    transition: 0.3s;
+    a, span{
+      color: #EEE3FA;
+    }
+
+    :hover {
+      color: #FAE97E;
+    }
+  }
 
   &__gold-button {
     display: inline-flex;

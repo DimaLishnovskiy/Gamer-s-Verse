@@ -17,18 +17,20 @@ const games = [
   { src: "/games/runescape.svg", name: "Runescape" },
   { src: "/games/league_legends.svg", name: "League of Legends" },
   { src: "/games/diablo.svg", name: "Diablo" },
-  { src: "/games/fifa.svg", name: "FIFA" },
-  { src: "/games/dota.png", name: "Dota" },
-  { src: "/games/valorant.png", name: "Valorant" },
   { src: "/games/exile.png", name: "Path of Exile" },
-  { src: "/games/apex.png", name: "Apex Legends" },
-  { src: "/games/cs2.png", name: "Counter Strike 2" },
-  { src: "/games/final.png", name: "Final Fantasy" },
   { src: "/games/fortnite.png", name: "Fortnite" },
-  { src: "/games/overwatch.png", name: "Overwatch" },
   { src: "/games/call.png", name: "Call of Duty" },
-  { src: "/games/wot.png", name: "World of Tanks" },
+  { src: "/games/fifa.svg", name: "FIFA" },
+  { src: "/games/final.png", name: "Final Fantasy" },
   { src: "/games/tarkov.png", name: "Escape from Tarkov" },
+  { src: "/games/dota.png", name: "Dota" },
+  { src: "/games/overwatch.png", name: "Overwatch" },
+  { src: "/games/valorant.png", name: "Valorant" },
+  { src: "/games/apex.png", name: "Apex Legends" },
+  { src: "/games/rune_scape_old.png", name: "Runescape old" },
+  { src: "/games/pocket.png", name: "Pocket League" },
+  { src: "/games/cs2.png", name: "Counter Strike 2" },
+  { src: "/games/wot.png", name: "World of Tanks" },
 ];
 
 const sortedGames = computed(() => {
@@ -66,6 +68,7 @@ const modal = ref(false);
 <template>
   <div v-if="display.smAndUp" class="game__cards-bg">
     <Menu class="game__menu"></Menu>
+
     <v-container class="game__cards" max-width="1212" width="100%">
       <v-row no-gutters>
         <v-col cols="12">
@@ -109,7 +112,7 @@ const modal = ref(false);
               <div class="d-flex flex-column flex-lg-row align-center justify-space-between align-end">
                 <h1 class="text-white game__title text-uppercase title mb-6"><span class="">Choose</span><br>Your Game</h1>
                 <v-sheet class="field__wrapper bg-transparent w-100 mb-16 mb-lg-0" :height="xs ? 44 : 66" :max-width="mobile ? '100%' : 478">
-                  <v-text-field placeholder="ENTER GAME’S NAME" variant="plain" type="text" :max-width="mobile ? '100%' : 478" hide-details class=" custom-input " rounded="0">
+                  <v-text-field v-model="search" placeholder="ENTER GAME’S NAME" variant="plain" type="text" :max-width="mobile ? '100%' : 478" hide-details class=" custom-input " rounded="0">
                     <template v-slot:prepend-inner>
                       <nuxt-img width="16" src="/lupa.svg"></nuxt-img>
                     </template>
@@ -119,7 +122,7 @@ const modal = ref(false);
               <div class="d-flex align-start" v-if="!mobile">
                 <nuxt-img class="mt-8 mr-1" height="151" src="/little_man.png"></nuxt-img>
                 <v-sheet class="gradient-border" :class="{ 'no-results-effect': noResults }" max-width="304">
-                  <p class="px-2 py-4 text-uppercase text-white title fs-12 text-center cursor-pointer">can’t find what you looking for? Contact us <span class="cursor-pointer text-img" @click="modal = true">here</span></p>
+                  <p class="px-2 py-4 text-uppercase text-white title fs-12 text-center cursor-pointer">can’t find what you looking for? Contact us <span class="cursor-pointer text-img" @click="navigateTo('/game-request')">here</span></p>
                 </v-sheet>
               </div>
             </div>
@@ -133,7 +136,7 @@ const modal = ref(false);
               </div>
               <div class="d-flex align-start mt-13 mb-11" v-if="mobile">
                 <v-sheet class="gradient-border" max-width="286">
-                  <p class="px-2 py-4 text-uppercase text-white title fs-12 text-center cursor-pointer">can’t find what you looking for? Contact us <span @click="modal = true" class="text-img cursor-pointer">here</span></p>
+                  <p class="px-2 py-4 text-uppercase text-white title fs-12 text-center cursor-pointer">can’t find what you looking for? Contact us <span @click="navigateTo('/game-request')" class="text-img cursor-pointer">here</span></p>
                 </v-sheet>
               </div>
             </div>

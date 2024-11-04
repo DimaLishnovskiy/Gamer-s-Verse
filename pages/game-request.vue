@@ -105,6 +105,7 @@ const display = ref(useDisplay());
     z-index: 1;
     top: 0;
     width: 100%;
+    mix-blend-mode: darken;
   }
 
   .field__wrapper {
