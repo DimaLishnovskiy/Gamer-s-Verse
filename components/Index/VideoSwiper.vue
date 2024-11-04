@@ -14,7 +14,9 @@ const videoSources = [1,2,3,4,6];
 
 const isPlaying = ref(false);
 const isVisible = ref(true)
+const isOn = ref(false)
 const activeSlideIndex = ref(0);
+const hideButtonTimer = ref(0);
 
 const toggleVideo = () => {
   const video = document.querySelector(`#video-${activeSlideIndex.value}`);
@@ -28,6 +30,24 @@ const toggleVideo = () => {
     }
   }
 };
+
+const resetHideButtonTimer = () => {
+  clearTimeout(hideButtonTimer.value);
+  hideButtonTimer.value = window.setTimeout(() => {
+    isVisible.value = false;
+  }, 2000);
+};
+
+
+watchEffect(() => {
+  // Якщо відео грає, показуємо кнопку і запускаємо таймер для її зникнення
+  if (isPlaying.value && isVisible.value && !isOn.value) {
+    resetHideButtonTimer();
+  } else {
+    clearTimeout(hideButtonTimer.value); // Скидаємо таймер
+  }
+});
+
 
 const stopNonActiveVideos = () => {
   videoSources.forEach((_, index) => {
@@ -104,7 +124,7 @@ watch(activeSlideIndex, updateVideoPlayback);
         </swiper>
 
         <v-sheet width="50" height="50" class="play-button bg-transparent " @click="toggleVideo(); (display.mobile && isPlaying) ? isVisible=false : {}" @mouseover="!isPlaying ? {} : isVisible = true" @mouseleave="!isPlaying ? {} : isVisible = false">
-          <nuxt-img width="50" src="/index/video_play.png" v-show="isVisible"></nuxt-img>
+          <nuxt-img width="50" src="/index/video_play.png" v-show="isVisible" @mouseover="isOn = true" @mouseleave="isOn = false"></nuxt-img>
         </v-sheet>
 
         <div class="custom-prev">

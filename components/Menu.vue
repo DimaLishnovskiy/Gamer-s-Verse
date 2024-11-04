@@ -88,7 +88,7 @@ const closeMenu = () => {
       <div class="d-flex justify-center align-center pl-9 pr-2">
         <img @click="navigateTo('/')" class="mx-auto cursor-pointer" :width="mobile ? 180 : 289" src="/logo_text.svg">
 
-        <v-menu class="position-absolute" width="353" open-on-click v-model="burgerClick" style="position: absolute; right: 0;">
+        <v-menu scrim class="position-absolute" width="353" open-on-click v-model="burgerClick" style="position: absolute; right: 0;">
           <template v-slot:activator="{ props }">
             <div v-bind="props" :class="{ active: burgerClick }">
               <v-btn :ripple="false" icon="/" class="bg-transparent" variant="text" dark v-bind="props">
@@ -127,6 +127,10 @@ const closeMenu = () => {
 <style>
 .no-scroll {
   overflow: hidden !important;
+}
+
+.v-overlay__scrim {
+  background: transparent !important;
 }
 </style>
 
