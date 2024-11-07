@@ -10,9 +10,7 @@ const display = ref(useDisplay());
 <template>
   <div class="opt">
     <Menu class="opt__menu"/>
-    <nuxt-img v-if="display.smAndUp" src="/opt_city.png" class="w-100 opt__city"></nuxt-img>
-    <nuxt-img v-else src="/opt_city_mobile.svg" class="w-100 opt__city-mobile"></nuxt-img>
-
+    <nuxt-img src="/opt_city.png" class="w-100 opt__city"></nuxt-img>
     <v-container class="opt__container pt-0 px-3" fluid>
       <v-row class="position-relative" no-gutters>
         <v-col cols="12" class="d-flex justify-center align-center flex-column mb-10 mb-sm-15">

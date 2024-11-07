@@ -81,6 +81,7 @@ const modal = ref(false);
                     <nuxt-img width="16" src="/lupa.svg"></nuxt-img>
                   </template>
                 </v-text-field>
+                <p class="mt-2 title custom-yellow font-weight-regular text-uppercase mx-auto" :class="display.lgAndUp ? 'fs-16' : 'fs-12'" v-if="noResults">No game found</p>
               </v-sheet>
             </div>
             <div class="d-flex align-start" v-if="!mobile">

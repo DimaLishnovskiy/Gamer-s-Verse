@@ -38,10 +38,11 @@ const infoCards = [
             <span class="d-block"><span class="text-img">win</span> At Any Game</span>
             <span>You Play</span>
           </h1>
-          <p class="fs-16 font-weight-medium title custom-yellow mb-2">7000+ happy clients</p>
-          <nuxt-img class="mb-2" width="128" src="/index/stars.png"></nuxt-img>
+          
           <nuxt-link target="_blank" href="https://www.trustpilot.com/review/ballhardsden.com" >
-            <nuxt-img  class="main__trustpilot" width="106" src="/index/trustpilot.png"></nuxt-img>
+            <p class="fs-16 font-weight-medium title custom-yellow mb-2">7000+ happy clients</p>
+            <nuxt-img class="mb-2 d-block mx-auto" width="128" src="/index/stars.png"></nuxt-img>
+            <nuxt-img  class="main__trustpilot mx-auto d-block" width="106" src="/index/trustpilot.png"></nuxt-img>
           </nuxt-link>
         </div>
       </v-container>
@@ -99,9 +100,11 @@ const infoCards = [
     <section class="main__info">
       <v-container class="py-0">
         <div class="d-flex justify-center flex-column align-center">
-          <span class="fs-20 text-uppercase text-white font-weight-medium mb-2">Rated <span class="text-img fs-24">4.9</span> out of <span class="fs-24 text-img">5</span> based on <span class="fs-24 text-img">333</span> reviews.</span>
-          <img class="mb-2" src="/index/stars.png">
-          <nuxt-link target="_blank" href="https://www.trustpilot.com/review/ballhardsden.com"><img class="main__trustpilot" src="/index/trustpilot.png"></nuxt-link>
+          <nuxt-link class="" target="_blank" href="https://www.trustpilot.com/review/ballhardsden.com">
+            <span class="fs-20 text-uppercase text-white font-weight-medium mb-2 d-block mx-auto">Rated <span class="text-img fs-24">4.9</span> out of <span class="fs-24 text-img">5</span> based on <span class="fs-24 text-img">333</span> reviews.</span>
+            <img class="mb-2 d-block mx-auto" src="/index/stars.png">
+            <img class="main__trustpilot d-block mx-auto" src="/index/trustpilot.png">
+          </nuxt-link>
         </div>
       </v-container>
     </section>
@@ -124,6 +127,10 @@ const infoCards = [
   background-size: cover;
   background-position: bottom;;
   position: relative;
+
+  a {
+    text-decoration: none;
+  }
 
   &__video-block {
     border: 16px solid transparent; /* Прозора основа для картинки */
