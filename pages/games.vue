@@ -75,14 +75,16 @@ const modal = ref(false);
           <div class="game">
             <div class="d-flex flex-column flex-lg-row align-center justify-space-between align-end">
               <h1 class="text-white game__title text-uppercase title mb-6"><span class="">Choose</span><br>Your Game</h1>
-              <v-sheet class="field__wrapper bg-transparent w-100 mb-16 mb-lg-0" :height="xs ? 44 : 66" :max-width="mobile ? '100%' : 478">
+              <v-sheet class="field__wrapper bg-transparent w-100 mb-8 mb-lg-0" :height="xs ? 44 : 66" :max-width="mobile ? '100%' : 478">
                 <v-text-field v-model="search" placeholder="ENTER GAME’S NAME" variant="plain" type="text" :max-width="mobile ? '100%' : 478" hide-details class=" custom-input " rounded="0">
                   <template v-slot:prepend-inner>
                     <nuxt-img width="16" src="/lupa.svg"></nuxt-img>
                   </template>
                 </v-text-field>
-                <p class="mt-2 title custom-yellow font-weight-regular text-uppercase mx-auto" :class="display.lgAndUp ? 'fs-16' : 'fs-12'" v-if="noResults">No game found</p>
               </v-sheet>
+              <p v-if="mobile && noResults" class="gradient-border mb-8">
+                <p class="px-2 py-4 text-uppercase text-white title fs-12 text-center cursor-default">can’t find what you looking for? Contact us <nuxt-link class="cursor-pointer text-img" to="/game-request">here</nuxt-link></p>
+              </p> 
             </div>
             <div class="d-flex align-start" v-if="!mobile">
               <nuxt-img class="mt-8 mr-1" height="151" src="/little_man.png"></nuxt-img>
@@ -112,13 +114,16 @@ const modal = ref(false);
             <div class="game">
               <div class="d-flex flex-column flex-lg-row align-center justify-space-between align-end">
                 <h1 class="text-white game__title text-uppercase title mb-6"><span class="">Choose</span><br>Your Game</h1>
-                <v-sheet class="field__wrapper bg-transparent w-100 mb-16 mb-lg-0" :height="xs ? 44 : 66" :max-width="mobile ? '100%' : 478">
+                <v-sheet class="field__wrapper bg-transparent w-100 mb-8 mb-lg-0" :height="xs ? 44 : 66" :max-width="mobile ? '100%' : 478">
                   <v-text-field v-model="search" placeholder="ENTER GAME’S NAME" variant="plain" type="text" :max-width="mobile ? '100%' : 478" hide-details class=" custom-input " rounded="0">
                     <template v-slot:prepend-inner>
                       <nuxt-img width="16" src="/lupa.svg"></nuxt-img>
                     </template>
                   </v-text-field>
                 </v-sheet>
+                <p v-if="mobile && noResults" class="gradient-border mb-8">
+                  <p class="px-2 py-4 text-uppercase text-white title fs-12 text-center cursor-default">can’t find what you looking for? Contact us <nuxt-link class="cursor-pointer text-img" to="/game-request">here</nuxt-link></p>
+                </p> 
               </div>
               <div class="d-flex align-start" v-if="!mobile">
                 <nuxt-img class="mt-8 mr-1" height="151" src="/little_man.png"></nuxt-img>
