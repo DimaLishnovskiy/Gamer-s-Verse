@@ -4,14 +4,14 @@ import { Vue3Marquee } from "vue3-marquee";
 import { useCalcContainer } from "~/composables/useCalcContainer";
 
 const allGames = [
-  { src: "/games/warcraft.svg", name: "World of Warcraft" },
-  { src: "/games/runescape.svg", name: "Runescape" },
-  { src: "/games/league_legends.svg", name: "League of Legends" },
-  { src: "/games/diablo.svg", name: "Diablo" },
+  { src: "/games/warcraft.png", name: "Warcraft" },
+  { src: "/games/runescape.png", name: "Runescape" },
+  { src: "/games/league_legends.png", name: "League of Legends" },
+  { src: "/games/diablo.png", name: "Diablo" },
   { src: "/games/exile.png", name: "Path of Exile" },
   { src: "/games/fortnite.png", name: "Fortnite" },
   { src: "/games/call.png", name: "Call of Duty" },
-  { src: "/games/fifa.svg", name: "FIFA" },
+  { src: "/games/fifa.png", name: "FIFA" },
   { src: "/games/final.png", name: "Final Fantasy" },
   { src: "/games/tarkov.png", name: "Escape from Tarkov" },
   { src: "/games/dota.png", name: "Dota" },

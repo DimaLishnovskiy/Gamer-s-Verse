@@ -95,7 +95,7 @@ const infoCards = [
 
     <ImageText class="main__img-text"/>
 
-    <VideoSwiper class="main__swiper"/>
+    <LazyIndexVideoSwiper class="main__swiper"/>
 
     <section class="main__info">
       <v-container class="py-0">

@@ -48,7 +48,6 @@ watchEffect(() => {
   }
 });
 
-
 const stopNonActiveVideos = () => {
   videoSources.forEach((_, index) => {
     const video = document.getElementById(`video-${index}`);
@@ -79,6 +78,7 @@ const updateVideoPlayback = () => {
 
 // Спостерігаємо за зміною активного слайда та оновлюємо відтворення
 watch(activeSlideIndex, updateVideoPlayback);
+
 </script>
 
 <template>

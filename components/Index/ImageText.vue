@@ -32,7 +32,7 @@ const imgText = computed(() => {
           <h3 class="fs-36 font-weight-bold title text-white text-center mb-4 mb-lg-11 text-uppercase" v-html="item.title"></h3>
           <nuxt-img width="80" class="mb-6 mb-lg-8" src="/index/divider.png"></nuxt-img>
           <div class="d-flex justify-space-between align-center w-100 ga-6 ga-lg-0 mb-15 mb-lg-0" :class="(key % 2) !== 0  ? 'flex-column flex-lg-row-reverse' : 'flex-column flex-lg-row' ">
-            <img :src="item.img" style="max-width: 570px" width="100%">
+            <NuxtImg format="webp" :src="item.img" :width="570" quality="70" style="max-width: 570px; width: 100%;" />
             <v-sheet class="bg-transparent" max-width="440">
               <p class="custom-yellow font-weight-regular text-center text-lg-left title fs-18 text-uppercase" v-html="item.text"></p>
             </v-sheet>
