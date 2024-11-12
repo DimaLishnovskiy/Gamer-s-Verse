@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Choose from "~/components/Games/Choose.vue";
 import Contact from "~/components/Contact.vue";
 import { ref, computed } from "vue";
 import { useDisplay } from "vuetify";
@@ -84,7 +83,7 @@ const modal = ref(false);
               </v-sheet>
               <p v-if="mobile && noResults" class="gradient-border mb-8">
                 <p class="px-2 py-4 text-uppercase text-white title fs-12 text-center cursor-default">can’t find what you looking for? Contact us <nuxt-link class="cursor-pointer text-img" to="/game-request">here</nuxt-link></p>
-              </p> 
+              </p>
             </div>
             <div class="d-flex align-start" v-if="!mobile">
               <nuxt-img class="mt-8 mr-1" height="151" src="/little_man.png"></nuxt-img>
@@ -123,7 +122,7 @@ const modal = ref(false);
                 </v-sheet>
                 <p v-if="mobile && noResults" class="gradient-border mb-8">
                   <p class="px-2 py-4 text-uppercase text-white title fs-12 text-center cursor-default">can’t find what you looking for? Contact us <nuxt-link class="cursor-pointer text-img" to="/game-request">here</nuxt-link></p>
-                </p> 
+                </p>
               </div>
               <div class="d-flex align-start" v-if="!mobile">
                 <nuxt-img class="mt-8 mr-1" height="151" src="/little_man.png"></nuxt-img>

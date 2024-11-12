@@ -1,13 +1,11 @@
 <script setup>
 import "swiper/css";
 import "swiper/css/navigation";
+import 'swiper/css/pagination';
 import { useDisplay } from "vuetify";
-import VideoSwiper from "~/components/Index/VideoSwiper.vue";
 import ImageText from "~/components/Index/ImageText.vue";
 import { useCalcContainer } from "~/composables/useCalcContainer";
-import Marquee from "~/components/Index/Marquee.vue";
-import 'swiper/css';
-import 'swiper/css/pagination';
+
 import Comments from "~/components/Index/Comments.vue";
 
 const { mobile, xs } = useDisplay();
@@ -38,7 +36,7 @@ const infoCards = [
             <span class="d-block"><span class="text-img">win</span> At Any Game</span>
             <span>You Play</span>
           </h1>
-          
+
           <nuxt-link target="_blank" href="https://www.trustpilot.com/review/ballhardsden.com" >
             <p class="fs-16 font-weight-medium title custom-yellow mb-2">7000+ happy clients</p>
             <nuxt-img class="mb-2 d-block mx-auto" width="128" src="/index/stars.png"></nuxt-img>
@@ -90,7 +88,7 @@ const infoCards = [
     </section>
 
     <section class="main__games">
-      <Marquee/>
+      <LazyIndexMarquee/>
     </section>
 
     <ImageText class="main__img-text"/>

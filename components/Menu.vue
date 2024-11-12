@@ -1,7 +1,14 @@
 <script setup lang="ts">
 import ContactUs from "~/components/ContactUs.vue";
 
-const { mobile } = useDisplay();
+const isMobile = ref(false);
+const { $isClient } = useNuxtApp();
+
+if ($isClient) {
+  const { mobile } = useDisplay();
+  isMobile.value = mobile.value;
+}
+
 const menuLeft = [
   {
     name: "Games",
@@ -86,7 +93,7 @@ const closeMenu = () => {
 
 <template>
   <header>
-    <template v-if="!mobile">
+    <template v-if="!isMobile">
       <div class="d-flex justify-center">
         <v-sheet fluid width="100%" :max-width="useCalcContainer(944)" class="bg-transparent">
           <v-row no-gutters>
@@ -96,7 +103,7 @@ const closeMenu = () => {
                   <nuxt-link :to="item.to" class="text-uppercase text-decoration-none title fs-16" v-for="item in menuLeft">{{ item.name }}</nuxt-link>
                 </v-sheet>
                 <nuxt-link to="/">
-                  <nuxt-img src="/logo_text.svg" :width="mobile ? 134 : 289"></nuxt-img>
+                  <nuxt-img src="/logo_text.webp" :width="isMobile ? 134 : 289"></nuxt-img>
                 </nuxt-link>
                 <v-sheet max-width="260" class="menu__link  d-flex w-100 justify-space-between bg-transparent">
                   <template v-for="right in menuRight">
@@ -112,9 +119,9 @@ const closeMenu = () => {
         </v-sheet>
       </div>
     </template>
-    <template v-if="mobile">
+    <template v-if="isMobile">
       <div class="d-flex justify-center align-center pl-9 pr-2">
-        <img @click="navigateTo('/')" class="mx-auto cursor-pointer" :width="mobile ? 180 : 289" src="/logo_text.svg">
+        <img @click="navigateTo('/')" class="mx-auto cursor-pointer" :width="isMobile ? 180 : 289" src="/logo_text.webp">
 
         <v-menu scrim class="position-absolute" width="353" open-on-click v-model="burgerClick" style="position: absolute; right: 0;">
           <template v-slot:activator="{ props }">
