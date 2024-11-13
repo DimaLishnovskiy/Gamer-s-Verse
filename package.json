@@ -25,6 +25,7 @@
     "@mdi/font": "^7.4.47",
     "nuxt-video-player": "^1.0.17",
     "swiper": "^11.1.14",
+    "vue3-fullpage": "^0.2.0",
     "vue3-marquee": "^4.2.2",
     "vue3-youtube": "^0.1.9",
     "youtube-player": "^5.6.0",
