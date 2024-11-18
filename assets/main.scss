@@ -112,6 +112,14 @@ body {
   }
 }
 
+.text-image {
+  background-image: url(
+  "https://media.geeksforgeeks.org/wp-content/uploads/20231218222854/1.png");
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .w-40 {
   width: 40% !important;
 }
