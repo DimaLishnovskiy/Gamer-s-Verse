@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&display=swap');
+@import url('https://db.onlinewebfonts.com/c/ce7ee1905f939d4e0f4cfcb3470c4d4e?family=Old+Fenris');
+
+@font-face {
+  font-family: 'Diablo';
+  src: url('../assets/fonts/diablo.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 body {
   font-family: 'Outfit', sans-serif;
@@ -7,8 +16,33 @@ body {
   overflow-x: hidden;
 }
 
-.title {
- font-family: 'Josefin Sans', sans-serif;
+:root {
+  --text-color-default: #ADACA6;
+  --text-color-warning: #BF4327;
+  --text-color-title: #E5E0C8;
+}
+
+.diablo-font {
+ font-family: 'Diablo', sans-serif;
+}
+
+.description-text {
+  font-family: Alegreya Sans;
+  color: var(--text-color-default);
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.title-text {
+  color: var(--text-color-title);
+  font-family: Old Fenris;
+  font-size: 72px;
+  font-weight: 400;
+}
+
+.warning-text {
+  @extend .description-text;
+  color: var(--text-color-warning);
 }
 
 .custom-white {
