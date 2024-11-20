@@ -4,9 +4,9 @@ import ButtonQuote from "@/components/Games/Diablo/ButtonQuote.vue";
 </script>
 
 <template>
-  <div class="first-section-wrapper h-100 mt-10">
+  <div class="section-wrapper h-100 mt-10">
     <div class="first-section-content-wrapper h-100">
-      <nuxt-img class="mt-auto" src="/img/first-section-logo.webp" width="736" height="344"></nuxt-img>
+      <nuxt-img class="mt-auto image-logo" src="/img/first-section-logo.webp" width="736" height="344"></nuxt-img>
       <h1 class="diablo-font title-section">
         {{ content.firstPage.title }}
       </h1>
@@ -24,16 +24,10 @@ import ButtonQuote from "@/components/Games/Diablo/ButtonQuote.vue";
 
 <style scoped lang="scss">
 @import '@/assets/mixins';
+@import '@/assets/games';
 
-.first-section-wrapper {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  @include background-with-gradients('/img/first-section-background.webp');
-  background-size: cover;
-  background-position: center;
+.section-wrapper {
+  @include base-first-section('/img/first-section-background.webp');
 }
 
 .first-section-content-wrapper {
@@ -44,12 +38,23 @@ import ButtonQuote from "@/components/Games/Diablo/ButtonQuote.vue";
   width: 100%;
 }
 
+.image-logo {
+  @include between("xxs", "lg") {
+    width: 386px;
+    height: 182px;
+  }
+}
+
 .title-section {
   color: white;
   text-align: center;
   font-size: 80px;
   font-weight: 500;
   text-shadow: #F32906 10px 0 25px;
+
+  @include between("xxs", "lg") {
+    font-size: 40px;
+  }
 }
 
 .text-link {

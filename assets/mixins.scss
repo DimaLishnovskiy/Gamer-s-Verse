@@ -1,3 +1,12 @@
+$breakpoints: (
+        "xxs": 320px,
+        "xs": 480px,
+        "sm": 768px,
+        "md": 1024px,
+        "lg": 1280px,
+        "xl": 1440px,
+);
+
 @mixin background-with-gradients($image-url) {
   background:
           radial-gradient(circle at center, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 58%, rgba(0, 0, 0, 0.9) 100%),
@@ -6,4 +15,27 @@
           url(#{$image-url});
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+@mixin respond-to($breakpoint) {
+  $size: map-get($breakpoints, $breakpoint);
+  @if $size {
+    @media (min-width: $size) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint #{$breakpoint} not found in $breakpoints map.";
+  }
+}
+
+@mixin between($min, $max) {
+  $min-size: map-get($breakpoints, $min);
+  $max-size: map-get($breakpoints, $max);
+  @if $min-size and $max-size {
+    @media (min-width: $min-size) and (max-width: $max-size) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoints #{$min} or #{$max} not found in $breakpoints map.";
+  }
 }

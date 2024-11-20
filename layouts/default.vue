@@ -1,7 +1,14 @@
 <script setup lang="ts">
+import { useHead } from '@unhead/vue';
+import { useRoute } from 'vue-router';
 
-import Footer from "~/components/Footer.vue";
-import Contact from "~/components/Contact.vue";
+const route = useRoute();
+
+useHead(() => ({
+  bodyAttrs: {
+    class: route.path.startsWith('/games') ? 'body-games' : '',
+  },
+}));
 </script>
 
 <template>

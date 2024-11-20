@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&display=swap');
 @import url('https://db.onlinewebfonts.com/c/ce7ee1905f939d4e0f4cfcb3470c4d4e?family=Old+Fenris');
+@import './mixins';
 
 @font-face {
   font-family: 'Diablo';
@@ -16,6 +17,14 @@ body {
   overflow-x: hidden;
 }
 
+body.body-games {
+  background-color: black!important;
+}
+
+.font-none {
+  font-family: none;
+}
+
 :root {
   --text-color-default: #ADACA6;
   --text-color-warning: #BF4327;
@@ -23,7 +32,7 @@ body {
 }
 
 .diablo-font {
- font-family: 'Diablo', sans-serif;
+ font-family: 'Diablo', sans-serif !important;
 }
 
 .description-text {
@@ -36,8 +45,22 @@ body {
 .title-text {
   color: var(--text-color-title);
   font-family: Old Fenris;
-  font-size: 72px;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 34.73px;
+
+  @include respond-to("lg") {
+    font-size: 72px;
+    font-weight: 400;
+  }
+}
+
+.item-text {
+  color: var(--text-color-default);
+  font-family: Old Fenris;
+  font-size: 24px;
   font-weight: 400;
+  line-height: 28.8px;
 }
 
 .warning-text {

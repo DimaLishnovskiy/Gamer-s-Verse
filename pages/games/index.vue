@@ -96,8 +96,11 @@ const modal = ref(false);
           <ContactUs v-model="modal"/>
         </v-col>
         <v-col cols="12" class="d-flex align-center justify-center flex-wrap ga-6">
-          <div class="game__card" v-for="game in sortedGames" :key="game.name">
-            <img :src="game.src" :alt="game.name" />
+          <div class="game__card" v-for="game in sortedGames">
+            <nuxt-link class="cursor-pointer" :to="game.to" v-if="game.to">
+              <img :src="game.src" alt="">
+            </nuxt-link>
+            <img v-else :src="game.src" alt="">
           </div>
         </v-col>
       </v-row>
@@ -137,7 +140,7 @@ const modal = ref(false);
           <v-col cols="12">
             <div class="game__cards-mobile position-relative d-flex align-center justify-center flex-wrap ga-6">
               <div class="game__card" v-for="game in sortedGames">
-                <nuxt-link :to="game.to" v-if="game.to">
+                <nuxt-link class="cursor-pointer" :to="game.to" v-if="game.to">
                   <img :src="game.src" alt="">
                 </nuxt-link>
                 <img v-else :src="game.src" alt="">
@@ -161,6 +164,10 @@ const modal = ref(false);
 </template>
 
 <style lang="scss">
+//body {
+//  background-color: black !important;
+//}
+
 .no-results-effect {
   animation: pulse 1.5s ease-in-out infinite;
 }

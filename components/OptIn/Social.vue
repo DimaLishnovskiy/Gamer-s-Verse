@@ -5,7 +5,10 @@ const images = [
   { icon: "mingcute:whatsapp-fill", name: "WhatsApp", to: "" },
 ];
 
-  const display = ref(useDisplay())
+  const display = ref(useDisplay());
+  withDefaults(defineProps<{ showName?: boolean }>(), {
+    showName: true
+  })
 </script>
 
 <template>
@@ -14,7 +17,7 @@ const images = [
       <nuxt-link :href="image.to" class="text-decoration-none w-100 h-100 d-flex justify-center bg-transparent flex-column align-center" target="_blank">
         <nuxt-img v-if="image.to !== ''" width="24" height="24" :src="image.icon" class="text-img mb-3"></nuxt-img>
         <icon v-else name="mingcute:whatsapp-fill" size="28" class="mb-2 text-icon"></icon>
-        <span class="text-img title font-weight-regular text-uppercase text-center" :class="display.xs ? 'fs-14' : 'fs-16'">{{ image.name }}</span>
+        <span class="text-img title font-weight-regular text-uppercase text-center" v-if="showName" :class="display.xs ? 'fs-14' : 'fs-16'">{{ image.name }}</span>
       </nuxt-link>
     </v-sheet>
   </v-sheet>
