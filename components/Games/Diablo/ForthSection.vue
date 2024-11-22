@@ -52,7 +52,7 @@
 @import '@/assets/games';
 
 .content-wrapper {
-  @include base-first-section('/img/forth-section-background.webp');
+  @include base-first-section('/img/diablo/forth-section-background.webp');
 }
 
 .second-section-content-wrapper {

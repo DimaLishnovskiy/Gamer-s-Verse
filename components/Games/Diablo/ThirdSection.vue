@@ -41,7 +41,16 @@
   align-items: center;
   justify-content: center;
   background-size: cover;
-  background-position: center;
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.1) 0%,
+      rgba(0, 0, 0, 0.3) 20%,
+      rgba(0, 0, 0, 0.9) 100%),
+  linear-gradient(180deg, rgb(0, 0, 0) 11%,
+          rgba(0, 0, 0, 0.1) 50%, rgb(0, 0, 0) 95%),
+  linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%,
+          rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.2) 100%),
+  url(/img/diablo/fifth-section-background.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
 
   @include respond-to("lg") {
     background: radial-gradient(circle at center, rgba(0, 0, 0, 0.1) 0%,
@@ -51,7 +60,7 @@
             rgba(0, 0, 0, 0.1) 50%, rgb(0, 0, 0) 95%),
     linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%,
             rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.2) 100%),
-    url(/img/third-section-background.webp);
+    url(/img/diablo/third-section-background.webp);
     background-repeat: no-repeat;
     background-size: cover;
   }

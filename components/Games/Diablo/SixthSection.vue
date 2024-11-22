@@ -12,8 +12,8 @@ const success = ref(false);
 
 <template>
   <div class="content-wrapper h-100 mt-10">
-    <div class="second-section-content-wrapper h-100">
-        <div class="d-flex flex-column w-50">
+    <div class="sixth-section-content-wrapper h-100">
+        <div class="d-flex flex-column">
           <h1 class="title-section diablo-font title-text mb-4">contact us</h1>
           <p class="description-text mt-8">Detail your inquiry down below and we will get back to you to you within 24 hours. </p>
 <!--          todo fix styles of inputs according to design-->
@@ -23,7 +23,7 @@ const success = ref(false);
                           placeholder="First Name"
                           variant="plain" type="text"
                           hide-details
-                          class="contactus__custom-input mr-8"
+                          class="contactus__custom name-input"
                           rounded="0">
             </v-text-field>
             <v-text-field v-model="email"
@@ -34,13 +34,13 @@ const success = ref(false);
                           :rules="[(v: any) => !!v || 'Email is required', (v: any) => (v && /.+@.+\..+/.test(v)) || 'Email is required']"
                           variant="plain" type="text"
                           hide-details
-                          class="contactus__custom-input"
+                          class="contactus__custom email-input"
                           rounded="0">
             </v-text-field>
 
             <v-textarea
                 v-model="message"
-                class="contactus__custom-input mt-8 w-100"
+                class="contactus__custom message-input w-100"
                 placeholder="Type Here..."
                 variant="plain"
                 type="text"
@@ -50,7 +50,7 @@ const success = ref(false);
             <ButtonQuote class="mt-4 mx-auto" />
           </v-form>
 
-          <nuxt-img src="/img/diablo-divider.webp"></nuxt-img>
+          <nuxt-img src="/img/diablo/diablo-divider.webp"></nuxt-img>
           <p class="mt-4 description-text text-center">Want to chat right now? Contact here! </p>
           <Social :show-name="false" class="mx-auto mt-4"/>
         </div>
@@ -58,24 +58,64 @@ const success = ref(false);
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import '@/assets/mixins';
 @import '@/assets/games';
 
 .content-wrapper {
-  @include base-first-section('/img/sixth-section-background.webp');
+  @include base-first-section('/img/diablo/sixth-section-background.webp');
 }
 
-.second-section-content-wrapper {
+.sixth-section-content-wrapper {
   @extend .base-content-wrapper;
   align-items: flex-end;
-}
 
-.title-section {
-  @extend .base-title-section;
-  @include between("xxs", "lg") {
-    margin: 0 auto;
+  .d-flex.flex-column {
+    width: 100%;
+
+    @include respond-to("lg") {
+      width: 50%;
+    }
+  }
+
+  .title-section {
+    @extend .base-title-section;
+    @include between("xxs", "lg") {
+      margin: 0 auto !important;
+    }
   }
 }
+
+.name-input {
+  width: 100%;
+  @include base_custom_input;
+
+  @include respond-to("lg") {
+    margin-right: 4rem;
+    width: 40%;
+  }
+}
+
+.message-input {
+  margin-top: 1rem;
+  @include base_custom_input;
+
+  @include respond-to("lg") {
+    margin-top: 2rem;
+  }
+}
+
+.email-input {
+  width: 100%;
+  @include base_custom_input;
+  margin-top: 1rem;
+
+  @include respond-to("lg") {
+    width: 40%;
+    margin-top: 0;
+  }
+}
+
+
 
 </style>

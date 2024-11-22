@@ -4,10 +4,6 @@ import { Vue3Fullpage as FullPage } from 'vue3-fullpage';
 
 import FirstSection from "@/components/Games/Diablo/FirstSection.vue";
 import SecondSection from "@/components/Games/Diablo/SecondSection.vue";
-import ThirdSection from "@/components/Games/Diablo/ThirdSection.vue";
-import ForthSection from "@/components/Games/Diablo/ForthSection.vue";
-import FifthSection from "@/components/Games/Diablo/FifthSection.vue";
-import SixthSection from "@/components/Games/Diablo/SixthSection.vue";
 </script>
 
 <template>
@@ -20,16 +16,22 @@ import SixthSection from "@/components/Games/Diablo/SixthSection.vue";
         <SecondSection />
       </section>
       <section>
-        <ThirdSection />
+        <LazyGamesDiabloThirdSection />
       </section>
       <section>
-        <ForthSection />
+        <LazyGamesDiabloForthSection />
       </section>
       <section>
-        <FifthSection />
+        <LazyGamesDiabloFifthSection />
       </section>
       <section>
-        <SixthSection />
+        <LazyGamesDiabloSixthSection />
+      </section>
+      <section>
+        <LazyGamesDiabloSevenSection />
+      </section>
+      <section>
+        <LazyGamesDiabloEightSection />
       </section>
     </FullPage>
   </ClientOnly>

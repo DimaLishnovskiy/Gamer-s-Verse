@@ -132,6 +132,7 @@ const submit = () => {
 </template>
 
 <style lang="scss">
+@import '@/assets/mixins';
 .contactus {
   &__wrapper {
     background-image: url("/contact/contact_bg.svg") !important;
@@ -206,97 +207,7 @@ const submit = () => {
   }
 
   &__custom-input {
-    .v-input__control {
-      background-image: url('/field_noise.png'); /* Вказуємо шлях до зображення */
-      background-size: cover; /* Робимо зображення таким, щоб покривало весь елемент */
-      background-repeat: no-repeat; /* Зображення не повторюється */
-      background-position: center; /* Центруємо зображення */
-      backdrop-filter: blur(50px);
-      opacity: 1;
-      transition: color 0.3s ease !important;
-      color: rgba(250, 233, 126, 0.5);
-
-      &:hover {
-        color: rgba(250, 233, 126, 1);
-        opacity: 1;
-
-        input::placeholder {
-          color: #FAE97E;
-          opacity: 1;
-        }
-
-        textarea::placeholder {
-          color: #FAE97E;
-          opacity: 1;
-        }
-      }
-
-      &:focus-within {
-        border-image: linear-gradient(90deg, rgba(195, 162, 66, 0.5) 0%, rgba(244, 233, 149, 1) 100%) !important;
-        color: #FAE97E;
-        opacity: 1;
-      }
-
-      input {
-        transition: padding 0.3s ease, font-size 0.3s ease, color 0.3s ease;
-        padding: 0 24px;
-        border: none;
-        min-height: 49px;
-        font-size: 18px;
-
-        @media(max-width: 600px) {
-          min-height: 42px;
-          font-size: 12px;
-        }
-
-        &[aria-invalid="true"] {
-          &::placeholder {
-            color: #FAE97E;
-          }
-
-          color: #E27070 !important;
-        }
-
-        &::placeholder {
-          color: rgba(250, 233, 126, 0.5) !important;
-          text-transform: uppercase;
-          font-size: 18px;
-          font-weight: 600;
-          font-family: Josefin Sans, sans-serif;
-
-          @media(max-width: 600px) {
-            font-size: 12px;
-          }
-        }
-      }
-
-      textarea {
-        transition: padding 0.3s ease, font-size 0.3s ease, color 0.3s ease;
-        padding: 22px 24px;
-        border: none;
-        font-size: 15px;
-
-        @media(max-width: 600px) {
-          font-size: 12px;
-        }
-
-        &::placeholder {
-          color: rgba(250, 233, 126, 0.5);
-          text-transform: uppercase;
-          font-size: 18px;
-          font-weight: 600;
-          font-family: Josefin Sans, sans-serif;
-
-          @media(max-width: 600px) {
-            font-size: 12px;
-          }
-
-          &:hover {
-            color: red
-          }
-        }
-      }
-    }
+    @include base_custom_input;
   }
 }
 </style>

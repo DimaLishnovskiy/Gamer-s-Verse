@@ -22,7 +22,7 @@ import ButtonQuote from "@/components/Games/Diablo/ButtonQuote.vue";
 @import '@/assets/games';
 
 .content-wrapper {
-  @include base-first-section('/img/second-section-background.webp');
+  @include base-first-section('/img/diablo/second-section-background.webp');
 }
 
 .section-content-wrapper {

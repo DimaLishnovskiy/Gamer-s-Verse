@@ -1,30 +1,9 @@
 <script setup lang="ts">
+import  {story} from "~/lib/constants";
+
 const textYellowStyles = "custom-yellow text-title title";
 
 const { mobile } = useDisplay();
-const data = [
-  {
-    img: "/story_1.png",
-    text: "Late 2019. Humble beginnings. I hired one guy to powerlevel Runescape accounts while I worked day and night to bring business in."
-  },
-  {
-    img: "/story_2.png",
-    text: "By the end 2019 we grew into a 3-man team. There was not enough room for me in our little attic-office, so I had to work from home. :("
-  },
-  {
-    img: "/story_3.png",
-    text: "Nine months later we rented a bigger place."
-  },
-  {
-    img: "/story_4.png",
-    text: "Finally had my own little corner to work at :) We weathered many ups and downs in this place. Almost went out of business. But we never stopped and in 2023 we finally moved up, again."
-  },
-  {
-    img: "/story_5.png",
-    text: "Ball Hard’s Den Version 3 babe! "
-  },
-
-];
 </script>
 
 <template>
@@ -37,7 +16,7 @@ const data = [
         <p :class="textYellowStyles" class="fs-18">Founder of Ball Hard’s Den</p>
       </div>
     </div>
-    <div class="story__story d-flex justify-space-between align-center ga-8 ga-sm-16" v-for="(story, key) in data" :class="(key % 2) !== 0  ? 'flex-column flex-lg-row-reverse' : 'flex-column flex-lg-row'">
+    <div class="story__story d-flex justify-space-between align-center ga-8 ga-sm-16" v-for="(story, key) in story" :class="(key % 2) !== 0  ? 'flex-column flex-lg-row-reverse' : 'flex-column flex-lg-row'">
       <img class="order-2 w-100 w-lg-auto" :src="story.img">
       <v-sheet class="bg-transparent" :max-width="!mobile ? 350 : '100%'">
         <p :class="textYellowStyles" class="fs-18 font-weight-regular text-center text-lg-left">{{ story.text }}</p>

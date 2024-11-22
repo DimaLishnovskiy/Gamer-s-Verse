@@ -6,7 +6,7 @@ import ButtonQuote from "@/components/Games/Diablo/ButtonQuote.vue";
 <template>
   <div class="section-wrapper h-100 mt-10">
     <div class="first-section-content-wrapper h-100">
-      <nuxt-img class="mt-auto image-logo" src="/img/first-section-logo.webp" width="736" height="344"></nuxt-img>
+      <nuxt-img class="mt-auto image-logo" src="/img/diablo/first-section-logo.webp" width="736" height="344"></nuxt-img>
       <h1 class="diablo-font title-section">
         {{ content.firstPage.title }}
       </h1>
@@ -15,7 +15,7 @@ import ButtonQuote from "@/components/Games/Diablo/ButtonQuote.vue";
         <span :style="{color: content.firstPage.rating.color}">5</span>
         based on <span :style="{color: content.firstPage.rating.color}">{{ content.firstPage.rating.reviews }}</span>
       </p>
-      <nuxt-img src="/img/trustpilot.webp" width="130"></nuxt-img>
+      <nuxt-img src="/img/diablo/trustpilot.webp" width="130"></nuxt-img>
       <ButtonQuote class="mt-4" />
       <p class="diablo-font text-link d-flex align-center mt-auto">new to boosting? <Icon class="ml-4" name="mdi:arrow-down" /></p>
     </div>
@@ -27,7 +27,7 @@ import ButtonQuote from "@/components/Games/Diablo/ButtonQuote.vue";
 @import '@/assets/games';
 
 .section-wrapper {
-  @include base-first-section('/img/first-section-background.webp');
+  @include base-first-section('/img/diablo/first-section-background.webp');
 }
 
 .first-section-content-wrapper {

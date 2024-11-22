@@ -18,7 +18,7 @@
     cursor: pointer;
     width: $image-width;
     height: $image-height;
-    background: url("/img/button.webp") no-repeat center center;
+    background: url("/img/diablo/button.webp") no-repeat center center;
     background-size: cover;
     display: flex;
     align-items: center;
