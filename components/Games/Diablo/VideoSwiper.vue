@@ -125,10 +125,20 @@ watch(activeSlideIndex, updateVideoPlayback);
         </swiper>
 
         <div class="custom-prev">
-          <span>&#129172;</span>
+          <nuxt-img
+              width="14"
+              height="24"
+              src="/icon/left-arrow.webp"
+              alt="Frame"
+          />
         </div>
         <div class="custom-next">
-          <span>&#129174;</span>
+          <nuxt-img
+              width="14"
+              height="24"
+              src="/icon/right-arrow.webp"
+              alt="Frame"
+          />
         </div>
       </v-sheet>
     </div>
@@ -162,8 +172,8 @@ $active-dot-color: #BF4327;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  //padding-top: 12px;
+  //padding-bottom: 12px;
 }
 
 .swiper.swiper-coverflow {
@@ -261,8 +271,6 @@ $active-dot-color: #BF4327;
   .custom-prev,
   .custom-next {
     cursor: pointer;
-    font-size: 30px;
-    color: rgba(191, 67, 39, 1);
     user-select: none;
   }
 

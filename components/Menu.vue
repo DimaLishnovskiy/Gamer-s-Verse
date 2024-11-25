@@ -93,7 +93,7 @@ const closeMenu = () => {
 
 <template>
   <header>
-    <template v-if="!isMobile">
+    <div class="desktop">
       <div class="d-flex justify-center">
         <v-sheet fluid width="100%" :max-width="useCalcContainer(944)" class="bg-transparent">
           <v-row no-gutters>
@@ -118,8 +118,8 @@ const closeMenu = () => {
           </v-row>
         </v-sheet>
       </div>
-    </template>
-    <template v-if="isMobile">
+    </div>
+    <div class="mobile">
       <div class="d-flex justify-center align-center pl-9 pr-2">
         <img @click="navigateTo('/')" class="mx-auto cursor-pointer" :width="isMobile ? 180 : 289" src="/logo_text.webp">
 
@@ -151,7 +151,7 @@ const closeMenu = () => {
           </v-list>
         </v-menu>
       </div>
-    </template>
+    </div>
 
     <ContactUs v-model="modal"></ContactUs>
   </header>
@@ -170,6 +170,23 @@ const closeMenu = () => {
 </style>
 
 <style scoped lang="scss">
+@import '@/assets/mixins';
+
+.mobile {
+  display: block;
+
+  @include respond-to("lg") {
+    display: none;
+  }
+}
+
+.desktop {
+  display: none;
+
+  @include respond-to("lg") {
+    display: block;
+  }
+}
 
 .menu {
 

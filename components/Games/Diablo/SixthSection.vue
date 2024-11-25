@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ButtonQuote from "~/components/Games/Diablo/ButtonQuote.vue";
-import Social from "~/components/OptIn/Social.vue";
+import SocialGames from "~/components/OptIn/SocialGames.vue";
 
 const form = ref();
 const email = ref('');
@@ -15,9 +15,9 @@ const success = ref(false);
     <div class="sixth-section-content-wrapper h-100">
         <div class="d-flex flex-column">
           <h1 class="title-section diablo-font title-text mb-4">contact us</h1>
-          <p class="description-text mt-8">Detail your inquiry down below and we will get back to you to you within 24 hours. </p>
+          <p class="description-text">Detail your inquiry down below and we will get back to you to you within 24 hours. </p>
 <!--          todo fix styles of inputs according to design-->
-          <v-form v-model="form" class="bg-transparent mb-8 w-100 d-flex mt-16 flex-wrap" @submit.prevent>
+          <v-form v-model="form" class="contact-form bg-transparent w-100 d-flex flex-wrap" @submit.prevent>
             <v-text-field v-model="firstName"
                           color="green"
                           placeholder="First Name"
@@ -52,7 +52,7 @@ const success = ref(false);
 
           <nuxt-img src="/img/diablo/diablo-divider.webp"></nuxt-img>
           <p class="mt-4 description-text text-center">Want to chat right now? Contact here! </p>
-          <Social :show-name="false" class="mx-auto mt-4"/>
+          <SocialGames :show-name="false" is-color :item-sx="{ borderRadius: '8px' }" class="mx-auto mt-4"/>
         </div>
     </div>
   </div>
@@ -62,8 +62,31 @@ const success = ref(false);
 @import '@/assets/mixins';
 @import '@/assets/games';
 
+.contact-form {
+  margin: 24px 0;
+
+  @include respond-to("lg") {
+    margin-bottom: 32px;
+    margin-top: 64px;
+  }
+
+  .button-quote-wrapper {
+    margin-top: 0 !important;
+
+    @include respond-to("lg") {
+      margin-top: 16px;
+    }
+  }
+}
+
 .content-wrapper {
   @include base-first-section('/img/diablo/sixth-section-background.webp');
+}
+
+.description-text {
+  @include respond-to("lg") {
+    margin-top: 16px;
+  }
 }
 
 .sixth-section-content-wrapper {
@@ -80,7 +103,7 @@ const success = ref(false);
 
   .title-section {
     @extend .base-title-section;
-    @include between("xxs", "lg") {
+    @include respond-to("lg") {
       margin: 0 auto !important;
     }
   }

@@ -4,14 +4,14 @@ import {diabloServicesList} from "~/lib/constants";
 
 <template>
   <div class="content-wrapper h-100 mt-10">
-    <div class="second-section-content-wrapper h-100 pt-16">
+    <div class="second-section-content-wrapper h-100">
       <p class="description-text text-center w-100">Menu of</p>
       <h1 class="diablo-font title-text text-center w-100">Services</h1>
 
-      <div class="items-wrapper mt-16">
+      <div class="items-wrapper">
         <div class="item d-flex align-center justify-center flex-column" v-for="item in diabloServicesList" :key="item.title">
           <p class="item-text text-capitalize text-center mb-auto lg:mb-0">{{item.title}}</p>
-          <nuxt-img class="my-4" width="56" height="56" :src="item.icon"></nuxt-img>
+          <nuxt-img width="56" height="56" :src="item.icon"></nuxt-img>
           <p class="item-text item-text-description">{{item.description}}</p>
         </div>
       </div>
@@ -22,6 +22,24 @@ import {diabloServicesList} from "~/lib/constants";
 <style scoped lang="scss">
 @import '@/assets/mixins';
 @import '@/assets/games';
+
+.item-text {
+  font-size: 16px;
+  font-weight: 400;
+
+  @include respond-to("lg") {
+    .item-text {
+      font-size: 24px;
+      font-weight: 400;
+    }
+  }
+}
+
+.second-section-content-wrapper {
+  @include respond-to("lg") {
+    padding-top: 64px;
+  }
+}
 
 .content-wrapper {
   padding: 0 60px;
@@ -46,13 +64,24 @@ import {diabloServicesList} from "~/lib/constants";
 
   @include respond-to("lg") {
     display: grid;
+    margin-top: 64px;
     justify-items: center;
     grid-row-gap: 80px;
+    grid-column-gap: 24px;
     grid-template-columns: repeat(4, 1fr);
   }
 
   .item {
     width: 50%;
+
+    img {
+      margin: 10px 0;
+
+      @include respond-to("lg") {
+        margin: 16px 0;
+      }
+    }
+
 
     @include respond-to("lg") {
       width: 100%;

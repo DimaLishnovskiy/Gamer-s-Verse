@@ -16,17 +16,17 @@ const images = [
 </script>
 
 <template>
-  <v-sheet max-width="536" class="d-flex bg-transparent ga-2 justify-center justify-sm-space-between w-100 flex-wrap">
+  <v-sheet max-width="536" class="d-flex bg-transparent ga-4 justify-center w-100 flex-wrap">
     <v-sheet
         :style="itemSx"
         :class="{'disabled': image.to === ''}" v-for="image in images"
-        :width="display.smAndUp ? 162 : 142"
-        :height="display.smAndUp ? 102 : 92"
+        :width="72"
+        :height="64"
         class="image-container bg-transparent d-flex justify-center align-center"
     >
       <nuxt-link :style="{backgroundColor: isColor ? image.color : 'transparent'}" :href="image.to" class="text-decoration-none w-100 h-100 d-flex justify-center flex-column align-center" target="_blank">
-        <nuxt-img v-if="image.to !== ''" width="24" height="24" :src="image.icon" class="text-img mb-3"></nuxt-img>
-        <icon v-else name="mingcute:whatsapp-fill" size="28" class="mb-2 text-icon"></icon>
+        <nuxt-img v-if="image.to !== ''" width="24" height="24" :src="image.icon" class="text-img"></nuxt-img>
+        <icon v-else name="mingcute:whatsapp-fill" size="28" class="text-icon"></icon>
         <span class="text-img title font-weight-regular text-uppercase text-center" v-if="showName" :class="display.xs ? 'fs-14' : 'fs-16'">{{ image.name }}</span>
       </nuxt-link>
     </v-sheet>

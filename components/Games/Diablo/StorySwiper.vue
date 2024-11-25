@@ -54,10 +54,20 @@ const pagination = {
         </swiper>
 
         <div class="custom-prev">
-          <span>&#129172;</span>
+          <nuxt-img
+              width="14"
+              height="24"
+              src="/icon/left-arrow.webp"
+              alt="Frame"
+          />
         </div>
         <div class="custom-next">
-          <span>&#129174;</span>
+          <nuxt-img
+              width="14"
+              height="24"
+              src="/icon/right-arrow.webp"
+              alt="Frame"
+          />
         </div>
       </v-sheet>
     </div>
@@ -125,8 +135,8 @@ $active-dot-color: #BF4327;
     }
 
     .image-slide {
-      width: 90%;
-      height: 90%;
+      //width: 90%;
+      //height: 90%;
       border-radius: 100%;
     }
 
@@ -138,8 +148,6 @@ $active-dot-color: #BF4327;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      padding-top: 12px;
-      padding-bottom: 12px;
 
       @include respond-to("lg") {
         margin-right: 50px;
@@ -147,9 +155,11 @@ $active-dot-color: #BF4327;
     }
 
     .title-text {
+      margin-top: 40px;
       margin-bottom: 16px;
 
       @include respond-to("lg") {
+        margin-top: 0;
         margin-bottom: 32px;
       }
     }
@@ -246,8 +256,6 @@ $active-dot-color: #BF4327;
     .custom-prev,
     .custom-next {
       cursor: pointer;
-      font-size: 30px;
-      color: rgba(191, 67, 39, 1);
       user-select: none;
     }
 
@@ -278,7 +286,7 @@ $active-dot-color: #BF4327;
     }
 
     @media (max-width: 650px) {
-      left: -20px !important;
+      left: -40px !important;
     }
   }
 
@@ -293,7 +301,7 @@ $active-dot-color: #BF4327;
     }
 
     @media (max-width: 650px) {
-      right: -18px !important;
+      right: -40px !important;
     }
   }
 }
